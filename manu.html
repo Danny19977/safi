@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-	<title>Coffee - Free Bootstrap 4 Template </title>
+	<title>Manufacturing </title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -29,12 +29,21 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
+
+	<style>
+		h3 {
+			color: black;
+			font-weight: bold;
+			font-size: 1.5em;
+			margin-bottom: 10px;
+		}
+	</style>
 </head>
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">Coffee<small>Blend</small></a>
+			<a class="navbar-brand" href="index.html">Café SAFI<small>PETIT KWILU</small></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
@@ -50,28 +59,40 @@
 						<a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">Info</a>
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="info.html">info</a>
-							<a class="dropdown-item" href="product-single.html">Single Product</a>
-							<a class="dropdown-item" href="cart.html">Cart</a>
-							<a class="dropdown-item" href="checkout.html">Checkout</a>
+							<a class="dropdown-item" href="cult.html">Cultivation</a>
+							<!-- <a class="dropdown-item" href="product-single.html">Single Product</a> -->
+							<a class="dropdown-item active" href="manu.html">Manufacturing</a>
+							<!-- <a class="dropdown-item" href="checkout.html">Checkout</a> -->
 						</div>
 					</li>
 					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 					<!-- <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li> -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="langDropdown" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" data-translate-key="nav_language">
+							Language
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+							<a class="dropdown-item" href="?lang=en">English</a>
+							<a class="dropdown-item" href="?lang=fr">Français</a>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
+
 	<!-- END nav -->
 
 	<section class="home-slider owl-carousel">
-		<div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+		<div class="slider-item" style="background-image: url(images/bg.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center">
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Coffee Manufacturing Process</h1>
-						<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Our Process</span></p>
+						<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Our
+								Process</span></p>
 					</div>
 				</div>
 			</div>
@@ -83,29 +104,24 @@
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
 					<span class="subheading">Discover</span>
-					<h2 class="mb-4">From Bean to Cup: Our Process</h2>
-					<p>Witness the fascinating journey of coffee beans as they transform from raw cherries to your aromatic cup.</p>
+					<br>
+					<h2 class="mb-4" style="color: black;">From Bean to Cup: Our Process</h2>
+					<p style="color: black;">Witness the fascinating journey of coffee beans as they transform from raw
+						cherries to your aromatic cup.</p>
 				</div>
 			</div>
-			
+			<div class="row"></div>
 			<div class="row">
 				<div class="col-md-12 mb-5">
 					<div class="process-carousel owl-carousel ftco-animate">
+
 						<div class="item">
 							<div class="process-card">
-								<img src="images/process-1.jpg" alt="Harvesting" class="img-fluid">
+								<img src="images/process-1.jpg" alt="Picking" class="img-fluid">
 								<div class="process-text p-4">
-									<h3>1. Harvesting</h3>
-									<p>Coffee beans are harvested when the cherries are bright red, indicating ripeness. Each tree is hand-picked several times a year.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="process-card">
-								<img src="images/process-2.jpg" alt="Processing" class="img-fluid">
-								<div class="process-text p-4">
-									<h3>2. Processing</h3>
-									<p>The cherries undergo either dry or wet processing to remove the fruit covering the beans, revealing the green coffee beans inside.</p>
+									<h3>1. Picking</h3>
+									<p>Only the ripest coffee cherries are hand-picked to ensure the highest quality
+										beans.</p>
 								</div>
 							</div>
 						</div>
@@ -114,48 +130,104 @@
 								<img src="images/process-3.jpg" alt="Drying" class="img-fluid">
 								<div class="process-text p-4">
 									<h3>3. Drying</h3>
-									<p>Beans are spread out in the sun or placed in mechanical dryers to reach the optimal moisture content of 11-12%.</p>
+									<p>Beans are spread out in the sun or placed in mechanical dryers to reach the
+										optimal moisture content of 11-12%.</p>
 								</div>
 							</div>
 						</div>
 						<div class="item">
 							<div class="process-card"></div>
-								<img src="images/process-4.jpg" alt="Milling" class="img-fluid">
-								<div class="process-text p-4">
-									<h3>4. Milling</h3>
-									<p>The dried beans undergo hulling, polishing, grading, and sorting to prepare them for export to roasters worldwide.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="process-card"></div>
-								<img src="images/process-5.jpg" alt="Roasting" class="img-fluid">
-								<div class="process-text p-4">
-									<h3>5. Roasting</h3>
-									<p>At temperatures between 370-540°F, the beans transform in color, density, and flavor, creating the rich aromas we love.</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="process-card"></div>
-								<img src="images/process-6.jpg" alt="Brewing" class="img-fluid">
-								<div class="process-text p-4">
-									<h3>6. Brewing</h3>
-									<p>The final step in our journey, where art and science combine to extract the perfect cup of coffee.</p>
-								</div>
+							<img src="images/process-4.jpg" alt="Milling" class="img-fluid">
+							<div class="process-text p-4">
+								<h3>4. Milling</h3>
+								<p>The dried beans undergo hulling, polishing, grading, and sorting to prepare them for
+									export to roasters worldwide.</p>
 							</div>
 						</div>
 					</div>
+					<div class="item">
+						<div class="process-card"></div>
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img src="images/picking.jpg" alt="Roasting" class="img-fluid"
+								style="max-width: 200px; height: 200px; object-fit: cover; border: 3px solid #c49b63; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+						</div>
+					</div>
+
+					<div class="process-text p-4">
+						<h3 style="text-align: center;">1. Picking</h3>
+						<p style="text-align: center;">Picking the coffee flower is a delicate process. Farmers
+							carefully select the blossoms at
+							their peak, ensuring only the healthiest flowers are chosen. This step is crucial, as it
+							determines the future quality of the coffee beans that will develop from these flowers.</p>
+					</div>
 				</div>
 			</div>
+			<div class="item">
+				<div style="display: flex; justify-content: center; align-items: center;">
+					<img src="images/selecting.jpg" alt="Roasting" class="img-fluid"
+						style="max-width: 200px; height: 200px; object-fit: cover; border: 3px solid #c49b63; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+				</div>
+			</div>
+			<div class="process-text p-4">
+				<h3 style="text-align: center;">2. selecting</h3>
+				<p style="text-align: center;">After harvesting, we carefully sort through all the picked coffee
+					cherries, selecting only the ripest
+					and healthiest beans. This meticulous selection process ensures that only the highest quality beans
+					move forward, guaranteeing exceptional flavor and consistency in every cup.</p>
+			</div>
+		</div>
+		</div>
+		<div class="item">
+			<div style="display: flex; justify-content: center; align-items: center;">
+				<img src="images/drying.jpg" alt="Roasting" class="img-fluid"
+					style="max-width: 200px; height: 200px; object-fit: cover; border: 3px solid #c49b63; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+			</div>
+			<div class="process-text p-4 text-center">
+				<h3 style="text-align: center;">3. Processing</h3>
+				<p style="text-align: center;"></p>
+				Once the best coffee beans are selected, they are thoroughly washed to remove any remaining pulp and
+				impurities. After washing, the beans are carefully dried—either under the sun or using mechanical
+				dryers—until they reach the ideal moisture level, preserving their quality and flavor.
+
+				Next, the dried beans undergo mechanical processing using specialized milling machines. This step
+				involves hulling to remove the parchment layer, followed by polishing to enhance the beans' appearance.
+				The beans are then graded and sorted by size and weight, ensuring only the finest beans move forward.
+				This meticulous processing guarantees consistency and prepares the coffee beans for roasting, unlocking
+				their full flavor potential.
+				</p>
+			</div>
+		</div>
+
+		<div class="item">
+			<div style="display: flex; justify-content: center; align-items: center;">
+				<img src="images/Packaging.jpg" alt="Roasting" class="img-fluid"
+					style="max-width: 200px; height: 200px; object-fit: cover; border: 3px solid #c49b63; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+			</div>
+			<div class="process-text p-4">
+				<h3 style="text-align: center;">4. Packaging and Distribution</h3>
+				<p style="text-align: center;">
+					After the coffee beans have been meticulously processed, they are carefully packaged to preserve
+					their freshness and rich aroma. We use high-quality, airtight packaging materials that protect the
+					beans from moisture, light, and air. Once sealed, the coffee is distributed through our trusted
+					network, ensuring it reaches cafes, retailers, and customers in perfect condition. This final step
+					guarantees that every cup brewed from our beans delivers the exceptional flavor and quality our
+					brand promises.
+				</p>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
 		</div>
 	</section>
 
 	<section class="ftco-section ftco-no-pt">
 		<div class="container">
-			<div class="row no-gutters text-center"></div>
-				<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center order-md-last mx-auto" style="background-image: url(images/coffee-process.jpg);">
-					<a href="https://vimeo.com/45830194" class="icon popup-vimeo d-flex justify-content-center align-items-center">
+			<div class="row no-gutters text-center">
+				<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center order-md-last mx-auto"
+					style="background-image: url(images/cards-1.jpg);">
+					<a href="videos/VID-20250206-WA0002.mp4"
+						class="icon popup-vimeo d-flex justify-content-center align-items-center">
 						<span class="icon-play"></span>
 					</a>
 				</div>
@@ -163,6 +235,7 @@
 					<div class="heading-section mb-5 pt-5 pl-md-5 text-center">
 						<div class="mx-auto">
 							<span class="subheading">Quality Process</span>
+							<br>
 							<h2 class="mb-4">Our Commitment to Excellence</h2>
 						</div>
 					</div>
@@ -172,49 +245,55 @@
 								<div class="timeline-number mx-auto">01</div>
 								<div class="timeline-content">
 									<h3>Sustainable Sourcing</h3>
-									<p>We work directly with farmers who practice sustainable agriculture, ensuring fair prices and environmental responsibility.</p>
+									<p>We work directly with farmers who practice sustainable agriculture, ensuring fair
+										prices and environmental responsibility.</p>
 								</div>
 							</div>
 							<div class="timeline-item ftco-animate text-center"></div>
-								<div class="timeline-number mx-auto">02</div>
-								<div class="timeline-content">
-									<h3>Expert Selection</h3>
-									<p>Our master tasters select only the highest quality beans through rigorous cupping sessions to identify superior flavor profiles.</p>
-								</div>
+							<div class="timeline-number mx-auto">02</div>
+							<div class="timeline-content">
+								<h3>Expert Selection</h3>
+								<p>Our master tasters select only the highest quality beans through rigorous cupping
+									sessions to identify superior flavor profiles.</p>
 							</div>
-							<div class="timeline-item ftco-animate text-center">
-								<div class="timeline-number mx-auto">03</div>
-								<div class="timeline-content">
-									<h3>Artisan Roasting</h3>
-									<p>Small-batch roasting by experienced roastmasters ensures each bean reaches its full flavor potential.</p>
-								</div>
+						</div>
+						<div class="timeline-item ftco-animate text-center">
+							<div class="timeline-number mx-auto">03</div>
+							<div class="timeline-content">
+								<h3>Artisan Roasting</h3>
+								<p>Small-batch roasting by experienced roastmasters ensures each bean reaches its full
+									flavor potential.</p>
 							</div>
-							<div class="timeline-item ftco-animate text-center">
-								<div class="timeline-number mx-auto">04</div>
-								<div class="timeline-content">
-									<h3>Quality Control</h3>
-									<p>Every batch undergoes strict quality testing before reaching your cup, guaranteeing consistency and excellence.</p>
-								</div>
+						</div>
+						<div class="timeline-item ftco-animate text-center">
+							<div class="timeline-number mx-auto">04</div>
+							<div class="timeline-content">
+								<h3>Quality Control</h3>
+								<p>Every batch undergoes strict quality testing before reaching your cup, guaranteeing
+									consistency and excellence.</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
 	</section>
 
-	<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_4.jpg);" data-stellar-background-ratio="0.5">
+	<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_4.jpg);"
+		data-stellar-background-ratio="0.5">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-2">
 				<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
 					<span class="subheading">Coffee Facts</span>
+					<br>
 					<h2 class="mb-4">Global Coffee Manufacturing Impact</h2>
 					<p class="text-white">Discover the worldwide significance of coffee production and consumption</p>
 				</div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-md-10">
-					<div class="row">
+				<div class="col-md-10 mx-auto">
+					<div class="row justify-content-center">
 						<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18 text-center">
 								<div class="text">
@@ -225,17 +304,25 @@
 						</div>
 						<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18 text-center">
-								<div class="text"></div>
+								<div class="text">
 									<strong class="number" data-number="2">0</strong><strong>B</strong>
 									<span>Cups Consumed Daily</span>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate"></div>
+						<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18 text-center">
-								<div class="text"></div>
+								<div class="text">
 									<strong class="number" data-number="25">0</strong><strong>M</strong>
 									<span>Coffee-Growing Families</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18 text-center">
+								<div class="text">
+									<strong class="number" data-number="10">0</strong><strong>M</strong>
+									<span>Tons Annual Production</span>
 								</div>
 							</div>
 						</div>
@@ -258,52 +345,53 @@
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section ftco-animate text-center">
 					<span class="subheading">Experience</span>
+					<br>
 					<h2 class="mb-4">Our Premium Coffee Selections</h2>
 					<p>Taste the difference that quality production makes in every cup.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">
-					<div class="menu-entry ftco-animate">
-						<a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>
+					<div class="menu-entry">
+						<a href="#" class="img" style="background-image: url(images/TAKE\ AWAY\ CUP.jpeg);"></a>
 						<div class="text text-center pt-4">
-							<h3><a href="#">Ethiopian Yirgacheffe</a></h3>
-							<p>Fruity and floral notes with bright acidity from our single-origin beans</p>
-							<p class="price"><span>$8.90</span></p>
-							<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+							<h3><a href="#">Coffee</a></h3>
+							<!-- <p>A small river named Duden flows by their place and supplies</p> -->
+							<p class="price"><span>5000 FC</span></p>
+							<!-- <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
 						</div>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="menu-entry ftco-animate">
-						<a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
+					<div class="menu-entry">
+						<a href="#" class="img" style="background-image: url(images/CUPA.jpeg);"></a>
 						<div class="text text-center pt-4">
-							<h3><a href="#">Colombian Supremo</a></h3>
-							<p>Balanced acidity with caramel sweetness and nutty undertones</p>
-							<p class="price"><span>$7.90</span></p>
-							<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+							<h3><a href="#">Café au lait</a></h3>
+							<!-- <p>A small river named Duden flows by their place and supplies</p> -->
+							<p class="price"><span>3000 FC</span></p>
+							<!-- <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
 						</div>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="menu-entry ftco-animate">
-						<a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
+					<div class="menu-entry">
+						<a href="#" class="img" style="background-image: url(images/2CUPA.jpeg);"></a>
 						<div class="text text-center pt-4">
-							<h3><a href="#">Sumatra Mandheling</a></h3>
-							<p>Full-bodied with earthy notes and low acidity, perfect for dark roasts</p>
-							<p class="price"><span>$9.90</span></p>
-							<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+							<h3><a href="#">EXPRESO</a></h3>
+							<!-- <p>A small river named Duden flows by their place and supplies</p> -->
+							<p class="price"><span>5000 FC</span></p>
+							<!-- <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
 						</div>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="menu-entry ftco-animate">
-						<a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
+					<div class="menu-entry">
+						<a href="#" class="img" style="background-image: url(images/MOCAA.jpeg);"></a>
 						<div class="text text-center pt-4">
-							<h3><a href="#">Costa Rican Tarrazu</a></h3>
-							<p>Bright, clean cup with pronounced acidity and chocolate notes</p>
-							<p class="price"><span>$8.50</span></p>
-							<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+							<h3><a href="#">MOCHA</a></h3>
+							<!-- <p>A small river named Duden flows by their place and supplies</p> -->
+							<p class="price"><span>8000 FC </span></p>
+							<!-- <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
 						</div>
 					</div>
 				</div>
@@ -312,7 +400,9 @@
 	</section>
 
 	<!-- Add this before the closing body tag -->
-	<script src="js/coffee-process.js"></script></div>-process.js"></script>
+	<script src="js/coffee-process.js"></script>
+	</div>
+	</script>
 
 	<footer class="ftco-footer ftco-section img">
 		<div class="overlay"></div>
@@ -324,49 +414,54 @@
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
 							there live the blind texts.</p>
 						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+							<li class="ftco-animate"><a href="https://youtu.be/idTdtfNns1g?si=HlnC5ELhjbWe2n-h"><span
+										class="icon-youtube"></span></a></li>
+							<li class="ftco-animate"><a
+									href="https://www.linkedin.com/in/caf%C3%A9-safi-petit-kwilu-0090a8280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><span
+										class="icon-linkedin"></span></a></li>
+							<li class="ftco-animate"><a href="https://www.facebook.com/share/1F36WfM1oJ/"><span
+										class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a
+									href="https://www.instagram.com/cafesafipetit/profilecard/?igsh=YWpqdXRsYjhkdXZj"><span
+										class="icon-instagram"></span></a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 mb-5 mb-md-5">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2">Recent Blog</h2>
-						<div class="block-21 mb-4 d-flex">
-							<a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
-							<div class="text">
-								<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a>
-								</h3>
-								<div class="meta">
-									<div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
-									<div><a href="#"><span class="icon-person"></span> Admin</a></div>
-									<div><a href="#"><span class="icon-chat"></span> 19</a></div>
-								</div>
-							</div>
-						</div>
-						<div class="block-21 mb-4 d-flex">
-							<a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-							<div class="text">
-								<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a>
-								</h3>
-								<div class="meta">
-									<div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
-									<div><a href="#"><span class="icon-person"></span> Admin</a></div>
-									<div><a href="#"><span class="icon-chat"></span> 19</a></div>
-								</div>
-							</div>
-						</div>
+						<!-- <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div> -->
+						<!-- <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div> -->
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-6 mb-5 mb-md-5">
 					<div class="ftco-footer-widget mb-4 ml-md-4">
 						<h2 class="ftco-heading-2">Services</h2>
 						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">Cooked</a></li>
-							<li><a href="#" class="py-2 d-block">Deliver</a></li>
-							<li><a href="#" class="py-2 d-block">Quality Foods</a></li>
-							<li><a href="#" class="py-2 d-block">Mixed</a></li>
+							<li><a href="#" class="py-2 d-block">Sale Coffee</a></li>
+							<li><a href="#" class="py-2 d-block">coffee bean bags</a></li>
+							<li><a href="#" class="py-2 d-block">preminum Packaging</a></li>
+							<!-- <li><a href="#" class="py-2 d-block">Mixed</a></li> -->
 						</ul>
 					</div>
 				</div>
@@ -375,12 +470,12 @@
 						<h2 class="ftco-heading-2">Have a Questions?</h2>
 						<div class="block-23 mb-3">
 							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain
-										View, San Francisco, California, USA</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929
-											210</span></a></li>
+								<li><span class="icon icon-map-marker"></span><span class="text">115, Avenue Colonel
+										Ebeya at the intersection of Avenues du Marché</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span
+											class="text">0977068929</span></a></li>
 								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">info@yourdomain.com</span></a></li>
+											class="text">safiagroup84@gmail.com</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -391,10 +486,8 @@
 
 					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script> All rights reserved | This template
-						is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-							target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						<script>document.write(new Date().getFullYear());</script> All rights reserved | <i
+							class=""></i> by <a href="target=" _blank>FREELANCE SOLUTIONS</a>
 					</p>
 				</div>
 			</div>
