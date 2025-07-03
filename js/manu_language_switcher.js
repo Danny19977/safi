@@ -1,10 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const languageSwitcher = document.getElementById('language-switcher');
+    const languageDropdownItems = document.querySelectorAll('[data-lang]');
+    const currentLangSpan = document.getElementById('current-lang');
 
     const setLanguage = (lang) => {
         document.documentElement.lang = lang;
         localStorage.setItem('language', lang);
+        updateTranslations(lang);
+        updateCurrentLanguageDisplay(lang);
+    };
 
+    const updateTranslations = (lang) => {
         document.querySelectorAll('[data-translate]').forEach(element => {
             const key = element.getAttribute('data-translate');
             if (translations[lang] && translations[lang][key]) {
@@ -13,12 +18,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    languageSwitcher.addEventListener('change', (event) => {
-        setLanguage(event.target.value);
+    const updateCurrentLanguageDisplay = (lang) => {
+        const langNames = {
+            'en': 'English',
+            'fr': 'Français'
+        };
+        if (currentLangSpan) {
+            currentLangSpan.textContent = langNames[lang] || 'English';
+        }
+    };
+
+    languageDropdownItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            event.preventDefault();
+            const selectedLang = event.target.getAttribute('data-lang');
+            setLanguage(selectedLang);
+        });
     });
 
     // Set initial language
-    const initialLang = localStorage.getItem('language') || 'en';
-    languageSwitcher.value = initialLang;
-    setLanguage(initialLang);
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    setLanguage(savedLanguage);
 });
