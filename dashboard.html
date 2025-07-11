@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="images/CAFÉ_SAFI_icon.png">
+
+<head>
+  <title>Dashboard - Café SAFI</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+
+  <link rel="stylesheet" href="css/ionicons.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .dashboard-container {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f8f9fa;
+    }
+    
+    .sidebar {
+      width: 250px;
+      background: #2c3e50;
+      color: white;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    
+    .sidebar-header {
+      padding: 20px;
+      background: #34495e;
+      text-align: center;
+      border-bottom: 1px solid #445566;
+    }
+    
+    .sidebar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar-nav li {
+      border-bottom: 1px solid #34495e;
+    }
+    
+    .sidebar-nav a {
+      display: block;
+      padding: 15px 20px;
+      color: #ecf0f1;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      background: #c49b61;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .sidebar-nav i {
+      margin-right: 10px;
+      width: 20px;
+    }
+    
+    .main-content {
+      margin-left: 250px;
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      transition: margin-left 0.3s ease;
+    }
+    
+    .content-section {
+      display: none;
+    }
+    
+    .content-section.active {
+      display: block;
+    }
+    
+    .page-header {
+      background: linear-gradient(135deg, #c49b61, #b8935a);
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    
+    .card-header {
+      background: #f8f9fa;
+      border-bottom: 1px solid #dee2e6;
+      font-weight: 600;
+    }
+    
+    .btn-primary {
+      background-color: #c49b61;
+      border-color: #c49b61;
+    }
+    
+    .btn-primary:hover {
+      background-color: #b8935a;
+      border-color: #b8935a;
+    }
+    
+    .form-control:focus {
+      border-color: #c49b61;
+      box-shadow: 0 0 0 0.2rem rgba(196, 155, 97, 0.25);
+    }
+    
+    .blog-post {
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: white;
+    }
+    
+    .blog-meta {
+      color: #6c757d;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+    
+    .activity-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #dee2e6;
+    }
+    
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #c49b61;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: white;
+    }
+    
+    .mobile-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      background: #c49b61;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-toggle:hover {
+      background: #b8935a;
+      transform: scale(1.05);
+    }
+    
+    .mobile-toggle i {
+      font-size: 16px;
+    }
+    
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    
+    /* Tablet Styles */
+    @media (max-width: 992px) {
+      .main-content {
+        padding: 15px;
+      }
+      
+      .page-header {
+        padding: 20px;
+      }
+      
+      .card-header.d-flex {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .activity-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+      
+      .activity-icon {
+        margin-bottom: 10px;
+        margin-right: 0;
+      }
+    }
+    
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      
+      .sidebar-overlay.show {
+        display: block;
+      }
+      
+      .main-content {
+        margin-left: 0;
+        padding: 60px 15px 15px 15px;
+      }
+      
+      .mobile-toggle {
+        display: block;
+      }
+      
+      .page-header {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+      }
+      
+      .page-header h2 {
+        font-size: 1.5rem;
+      }
+      
+      .card-body {
+        padding: 15px;
+      }
+      
+      .blog-post {
+        padding: 15px;
+      }
+      
+      .form-group {
+        margin-bottom: 15px;
+      }
+      
+      .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      
+      .btn-sm {
+        width: auto;
+        margin-bottom: 5px;
+      }
+      
+      .activity-item {
+        padding: 10px;
+      }
+    }
+    
+    /* Small Mobile Styles */
+    @media (max-width: 480px) {
+      .main-content {
+        padding: 60px 10px 10px 10px;
+      }
+      
+      .page-header {
+        padding: 15px 10px;
+        text-align: center;
+      }
+      
+      .page-header h2 {
+        font-size: 1.25rem;
+      }
+      
+      .sidebar {
+        width: 280px;
+      }
+      
+      .sidebar-header h4 {
+        font-size: 1.1rem;
+      }
+      
+      .sidebar-nav a {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+      
+      .card-header h5 {
+        font-size: 1rem;
+      }
+      
+      .blog-meta {
+        flex-wrap: wrap;
+      }
+      
+      .blog-meta span {
+        margin-right: 15px !important;
+        margin-bottom: 5px;
+      }
+    }
+    
+    /* Landscape Mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .main-content {
+        padding: 60px 10px 10px 10px;
+      }
+      
+      .page-header {
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="mobile-toggle" onclick="toggleSidebar()">
+    <i class="oi oi-menu"></i>
+  </button>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h4>Café SAFI</h4>
+        <p class="mb-0">Admin Dashboard</p>
+      </div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#" onclick="showPage('post-blog')" class="nav-link active" id="post-blog-nav">
+            <i class="oi oi-plus"></i>
+            Post A Blog
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showPage('view-blog')" class="nav-link" id="view-blog-nav">
+            <i class="oi oi-eye"></i>
+            View Blogs
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showPage('user-activity')" class="nav-link" id="user-activity-nav">
+            <i class="oi oi-people"></i>
+            User Activity
+          </a>
+        </li>
+        <li>
+          <a href="index.html" class="nav-link">
+            <i class="oi oi-home"></i>
+            Back to Website
+          </a>
+        </li>
+        <li>
+          <a href="login.html" class="nav-link">
+            <i class="oi oi-account-logout"></i>
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Post Blog Page -->
+      <div id="post-blog" class="content-section active">
+        <div class="page-header">
+          <h2>Post A Blog</h2>
+          <p class="mb-0">Create and publish new blog posts for Café SAFI</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">Create New Blog Post</h5>
+          </div>
+          <div class="card-body">
+            <form id="blogForm">
+              <div class="form-group mb-3">
+                <label for="blogTitle">Blog Title</label>
+                <input type="text" class="form-control" id="blogTitle" required>
+              </div>
+              
+              <div class="form-group mb-3">
+                <label for="blogCategory">Category</label>
+                <select class="form-control" id="blogCategory" required>
+                  <option value="">Select Category</option>
+                  <option value="coffee">Coffee</option>
+                  <option value="recipes">Recipes</option>
+                  <option value="news">News</option>
+                  <option value="events">Events</option>
+                </select>
+              </div>
+              
+              <div class="form-group mb-3">
+                <label for="blogImage">Featured Image</label>
+                <input type="file" class="form-control" id="blogImage" accept="image/*">
+              </div>
+              
+              <div class="form-group mb-3">
+                <label for="blogContent">Content</label>
+                <textarea class="form-control" id="blogContent" rows="10" required></textarea>
+              </div>
+              
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="publishNow">
+                <label class="form-check-label" for="publishNow">
+                  Publish immediately
+                </label>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">
+                <i class="oi oi-plus"></i> Create Blog Post
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Blogs Page -->
+      <div id="view-blog" class="content-section">
+        <div class="page-header">
+          <h2>View Blogs</h2>
+          <p class="mb-0">Manage and view all published blog posts</p>
+        </div>
+        
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">All Blog Posts</h5>
+            <button class="btn btn-primary btn-sm" onclick="showPage('post-blog')">
+              <i class="oi oi-plus"></i> New Post
+            </button>
+          </div>
+          <div class="card-body">
+            <div id="blogList">
+              <!-- Sample blog posts -->
+              <div class="blog-post">
+                <div class="blog-meta">
+                  <span><i class="oi oi-calendar"></i> March 15, 2024</span>
+                  <span class="ml-3"><i class="oi oi-tag"></i> Coffee</span>
+                  <span class="ml-3"><i class="oi oi-eye"></i> 245 views</span>
+                </div>
+                <h4>The Art of Coffee Brewing</h4>
+                <p>Discover the secrets behind perfect coffee brewing techniques used at Café SAFI...</p>
+                <div class="mt-3">
+                  <button class="btn btn-sm btn-outline-primary">Edit</button>
+                  <button class="btn btn-sm btn-outline-danger ml-2">Delete</button>
+                </div>
+              </div>
+              
+              <div class="blog-post">
+                <div class="blog-meta">
+                  <span><i class="oi oi-calendar"></i> March 10, 2024</span>
+                  <span class="ml-3"><i class="oi oi-tag"></i> Events</span>
+                  <span class="ml-3"><i class="oi oi-eye"></i> 189 views</span>
+                </div>
+                <h4>Coffee Tasting Event This Weekend</h4>
+                <p>Join us for an exclusive coffee tasting event featuring beans from Petit Kwilu...</p>
+                <div class="mt-3">
+                  <button class="btn btn-sm btn-outline-primary">Edit</button>
+                  <button class="btn btn-sm btn-outline-danger ml-2">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Activity Page -->
+      <div id="user-activity" class="content-section">
+        <div class="page-header">
+          <h2>User Activity</h2>
+          <p class="mb-0">Monitor user interactions and website analytics</p>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <h3 class="text-primary">1,234</h3>
+                <p class="mb-0">Total Visitors</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <h3 class="text-success">89</h3>
+                <p class="mb-0">Active Users</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <h3 class="text-warning">156</h3>
+                <p class="mb-0">Page Views</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5 class="mb-0">Recent Activity</h5>
+          </div>
+          <div class="card-body p-0">
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="oi oi-person"></i>
+              </div>
+              <div>
+                <strong>New user registration</strong>
+                <br>
+                <small class="text-muted">John Doe registered 2 hours ago</small>
+              </div>
+            </div>
+            
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="oi oi-eye"></i>
+              </div>
+              <div>
+                <strong>Blog post viewed</strong>
+                <br>
+                <small class="text-muted">"The Art of Coffee Brewing" viewed 15 times today</small>
+              </div>
+            </div>
+            
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="oi oi-comment-square"></i>
+              </div>
+              <div>
+                <strong>New contact message</strong>
+                <br>
+                <small class="text-muted">Customer inquiry received 1 hour ago</small>
+              </div>
+            </div>
+            
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="oi oi-cart"></i>
+              </div>
+              <div>
+                <strong>Menu item viewed</strong>
+                <br>
+                <small class="text-muted">Espresso menu page visited 45 times today</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        stroke="#F96D00" />
+    </svg></div>
+
+  <script src="js/translations.js"></script>
+  <script src="js/language_switcher.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    function showPage(pageId) {
+      // Hide all content sections
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Remove active class from all nav links
+      document.querySelectorAll('.sidebar-nav .nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Show selected page
+      document.getElementById(pageId).classList.add('active');
+      
+      // Add active class to selected nav link
+      document.getElementById(pageId + '-nav').classList.add('active');
+      
+      // Close sidebar on mobile after navigation
+      if (window.innerWidth <= 768) {
+        closeSidebar();
+      }
+    }
+    
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      
+      sidebar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+    
+    function closeSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      
+      sidebar.classList.remove('show');
+      overlay.classList.remove('show');
+    }
+    
+    // Blog form submission
+    document.getElementById('blogForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const title = document.getElementById('blogTitle').value;
+      const category = document.getElementById('blogCategory').value;
+      const content = document.getElementById('blogContent').value;
+      const publishNow = document.getElementById('publishNow').checked;
+      
+      // Create new blog post element
+      const blogPost = document.createElement('div');
+      blogPost.className = 'blog-post';
+      blogPost.innerHTML = `
+        <div class="blog-meta d-flex flex-wrap">
+          <span><i class="oi oi-calendar"></i> ${new Date().toLocaleDateString()}</span>
+          <span class="ml-3"><i class="oi oi-tag"></i> ${category}</span>
+          <span class="ml-3"><i class="oi oi-eye"></i> 0 views</span>
+        </div>
+        <h4>${title}</h4>
+        <p>${content.substring(0, 150)}...</p>
+        <div class="mt-3 d-flex flex-wrap gap-2">
+          <button class="btn btn-sm btn-outline-primary">Edit</button>
+          <button class="btn btn-sm btn-outline-danger">Delete</button>
+        </div>
+      `;
+      
+      // Add to blog list
+      document.getElementById('blogList').insertBefore(blogPost, document.getElementById('blogList').firstChild);
+      
+      // Reset form
+      this.reset();
+      
+      // Show success message
+      alert('Blog post created successfully!');
+      
+      // Switch to view blogs page
+      showPage('view-blog');
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        // Close mobile sidebar when switching to desktop
+        closeSidebar();
+      }
+    });
+    
+    // Prevent body scroll when sidebar is open on mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('sidebar');
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            if (sidebar.classList.contains('show') && window.innerWidth <= 768) {
+              document.body.style.overflow = 'hidden';
+            } else {
+              document.body.style.overflow = '';
+            }
+          }
+        });
+      });
+      observer.observe(sidebar, { attributes: true });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -3,7 +3,7 @@
 <link rel="icon" type="image/png" href="images/CAFÉ_SAFI_icon.png">
 
 <head>
-  <title>Blog Sofi</title>
+  <title>Login - Café SAFI</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -29,6 +29,66 @@
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .login-form {
+      background: rgba(14, 14, 14, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .login-form .form-control {
+      border: 2px solid #000;
+      border-radius: 8px;
+      padding: 12px 15px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: #fff;
+      color: #333;
+    }
+    
+    .login-form .form-control:focus {
+      border-color: #c49b61;
+      box-shadow: 0 0 0 0.2rem rgba(196, 155, 97, 0.25);
+      background-color: #fff;
+    }
+    
+    .login-form .form-label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .login-form .btn-primary {
+      background-color: #c49b61;
+      border-color: #c49b61;
+      padding: 12px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .login-form .btn-primary:hover {
+      background-color: #b8935a;
+      border-color: #b8935a;
+      transform: translateY(-2px);
+    }
+    
+    .login-form .btn-outline-primary {
+      border-color: #c49b61;
+      color: #c49b61;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    
+    .login-form .btn-outline-primary:hover {
+      background-color: #c49b61;
+      border-color: #c49b61;
+    }
+
+    
+  </style>
 </head>
 
 <body>
@@ -44,7 +104,7 @@
                 <li class="nav-item"><a href="index.html" class="nav-link" data-translate="nav_home">Home</a></li>
                 <li class="nav-item"><a href="menu.html" class="nav-link" data-translate="nav_menu">Menu</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link" data-translate="nav_services">Services</a></li>
-                <li class="nav-item active"><a href="blog.html" class="nav-link" data-translate="nav_blog">Blog</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link" data-translate="nav_blog">Blog</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link" data-translate="nav_about">About</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown"
@@ -55,6 +115,7 @@
                     </div>
                 </li>
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-translate="nav_contact">Contact</a></li>
+                <li class="nav-item active"><a href="login.html" class="nav-link" data-translate="nav_login">LOGIN</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="langDropdown" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false" data-translate="nav_language">
@@ -73,139 +134,78 @@
 
 
   <section class="home-slider owl-carousel">
-
     <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center">
-
           <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            <h1 class="mb-3 mt-5 bread" data-translate="blog_title">Blog</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html" data-translate="breadcrumb_home">Home</a></span> <span data-translate="breadcrumb_blog">Blog</span></p>
+            <h1 class="mb-3 mt-5 bread" data-translate="login_title">Login</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html" data-translate="breadcrumb_home">Home</a></span> <span data-translate="breadcrumb_login">Login</span></p>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- <section class="ftco-section">
-      <div class="container">
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-              </a>
-              <div class="text py-4 d-block">
-              	<div class="meta">
-                  <div><a href="#">Sept 28, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+          <div class="login-form p-5">
+            <div class="text-center mb-4">
+              <h2 class="ftco-heading-2" data-translate="login_welcome" style="color: #000;">Welcome Back</h2>
+              <p class="text-muted" data-translate="login_subtitle">Please sign in to your account</p>
+            </div>
+            
+            <form action="php/login.php" method="post">
+                <div class="form-group mb-3">
+                    <label for="login-email" class="form-label" data-translate="login_email">Email Address</label>
+                    <div class="position-relative">
+                        <input type="email" class="form-control floating-input" id="login-email" name="email" required autocomplete="username">
+                        <label class="floating-label" for="login-email" style="color:#000;">Enter your email</label>
+                    </div>
                 </div>
-                <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-              </a>
-              <div class="text py-4 d-block">
-              	<div class="meta">
-                  <div><a href="#">Sept 28, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+
+                <div class="form-group mb-3">
+                    <label for="login-password" class="form-label" data-translate="login_password">Password</label>
+                    <div class="position-relative">
+                        <input type="password" class="form-control floating-input" id="login-password" name="password" required autocomplete="current-password">
+                        <label class="floating-label" for="login-password" style="color:#000;">Enter your password</label>
+                    </div>
                 </div>
-                <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-              </a>
-              <div class="text py-4 d-block">
-              	<div class="meta">
-                  <div><a href="#">Sept 28, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                <style>
+                   
+                </style>
+                <script>
+                    // Set placeholder to a single space to trigger :placeholder-shown
+                    document.querySelectorAll('.floating-input').forEach(function(input) {
+                        input.setAttribute('placeholder', ' ');
+                    });
+                </script>
+                
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="remember">
+                    <label class="form-check-label" for="remember" data-translate="login_remember">Remember me</label>
                 </div>
-                <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_4.jpg');">
-              </a>
-              <div class="text py-4 d-block">
-              	<div class="meta">
-                  <div><a href="#">Sept 28, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                
+                <button type="submit" class="btn btn-primary w-100 mb-3" data-translate="login_button">Sign In</button>
+                
+                <div class="text-center">
+                    <a href="#" class="text-muted" data-translate="login_forgot">Forgot your password?</a>
                 </div>
-                <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_5.jpg');">
-              </a>
-              <div class="text py-4 d-block">
-              	<div class="meta">
-                  <div><a href="#">Sept 28, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_6.jpg');">
-              </a>
-              <div class="text py-4 d-block">
-              	<div class="meta">
-                  <div><a href="#">Sept 28, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
+                
+                <!-- Remove login-message div, since feedback is now handled by login.php -->
+
+                <!-- <hr class="my-4">
+                
+                <div class="text-center">
+                    <p class="text-muted" data-translate="login_no_account">Don't have an account?</p>
+                    <a href="reg.html" class="btn btn-outline-primary" data-translate="login_signup">Create Account</a>
+                </div> -->
+            </form>
           </div>
         </div>
       </div>
-    </section> -->
-
-  <section class="ftco-section text-center"
-    style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
-    <div class="container">
-      <h2 class="mb-4" style="font-size: 3rem;" data-translate="coming_soon_title">Coming Soon</h2>
-      <p class="lead" data-translate="coming_soon_text">Our blog is brewing! Stay tuned for updates.</p>
     </div>
   </section>
 
@@ -261,7 +261,6 @@
               <li><a href="#" class="py-2 d-block" data-translate="footer_service_2">Deliver</a></li>
               <li><a href="#" class="py-2 d-block" data-translate="footer_service_3">Quality Foods</a></li>
               <li><a href="#" class="py-2 d-block" data-translate="footer_service_4">Mixed</a></li>
-              <li><a href="login.html" class="py-2 d-block" data-translate="footer_service_5">login</a></li>
             </ul>
           </div>
         </div>
@@ -321,9 +320,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/blog_translations.js"></script>
-  <script src="js/blog_language_switcher.js"></script>
-
+  
 </body>
 
 </html>
