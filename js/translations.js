@@ -41,9 +41,9 @@ const translations = {
 
         // Services
         services_cup_of_coffee_title: "Cup of Coffee",
-        services_cup_of_coffee_text: "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.",
+        services_cup_of_coffee_text: "There's nothing quite like a cup of coffee from Cafe Safi. It's truly amazing – rich, aromatic, and with a flavor that just sings. Each sip is a little moment of perfection!",
         services_quality_beans_title: "Quality Beans",
-        services_quality_beans_text: "At Café SAFI PETIT KWILU, we serve only the finest beans—handpicked, sun-drenched, and roasted to bold perfection. Every sip carries the rich, unrivaled taste of Congo's soil. ☕✨",
+        services_quality_beans_text: "At Café SAFI PETIT KWILU, we serve only the most exquisite, premium gold  beans. Handpicked from the rarest, most delicate soil in Congo, sun drenched to perfection, and roasted to bold perfection.  Every sip carries the rich, opulent flavor of Congo's prized soil, making our beans the ultimate luxury coffee experience. ☕✨",
         services_premium_packaging_title: "Premium Packaging Strong Style, Stronger Coffee",
         services_premium_packaging_text: "Protective, airtight, & boldly designed—our bags & tins lock in freshness while showcasing Congo's vibrant spirit. From minimalist kraft to bold prints, every detail honors the craft.",
 
@@ -127,9 +127,9 @@ const translations = {
 
         // Services
         services_cup_of_coffee_title: "Tasse de Café",
-        services_cup_of_coffee_text: "Même le tout-puissant Pointing n'a aucun contrôle sur les textes aveugles, c'est presque unorthographique.",
+        services_cup_of_coffee_text: "Il n'y a rien de tel qu'une tasse de café du Café Safi. C'est vraiment incroyable – riche, aromatique, et avec une saveur qui chante. Chaque gorgée est un petit moment de perfection !",
         services_quality_beans_title: "Grains de Qualité",
-        services_quality_beans_text: "Chez Café SAFI PETIT KWILU, nous ne servons que les meilleurs grains—cueillis à la main, gorgés de soleil et torréfiés à la perfection audacieuse. Chaque gorgée porte le goût riche et inégalé de la terre du Congo. ☕✨",
+        services_quality_beans_text: "Au Café SAFI PETIT KWILU, nous ne servons que les grains d'or les plus exquis et de première qualité. Cueillis à la main dans le sol le plus rare et délicat du Congo, gorgés de soleil à la perfection, et torréfiés pour une audace parfaite. Chaque gorgée révèle la saveur riche et opulente du sol précieux du Congo, faisant de nos grains l'expérience ultime du café de luxe. ☕✨",
         services_premium_packaging_title: "Emballage Premium Style Fort, Café Plus Fort",
         services_premium_packaging_text: "Protecteur, hermétique et audacieusement conçu—nos sacs et boîtes verrouillent la fraîcheur tout en mettant en valeur l'esprit vibrant du Congo. Du kraft minimaliste aux imprimés audacieux, chaque détail honore le métier.",
 

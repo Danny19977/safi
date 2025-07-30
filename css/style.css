@@ -7564,7 +7564,8 @@ h1, h2, h3, h4, h5,
   .owl-carousel.home-slider {
     position: relative;
     height: 750px;
-    z-index: 0; }
+    z-index: 0;
+    overflow: hidden; }
     .owl-carousel.home-slider .slider-item {
       background-size: cover;
       background-repeat: no-repeat;
@@ -9281,3 +9282,74 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+/* Mobile scrolling fix for carousel */
+@media (max-width: 767.98px) {
+  .owl-carousel.home-slider {
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .owl-carousel.home-slider .owl-item {
+    touch-action: pan-y !important;
+  }
+  
+  .owl-carousel.home-slider .slider-item {
+    touch-action: pan-y !important;
+  }
+  
+  .owl-carousel.home-slider .slider-item .overlay {
+    pointer-events: none;
+  }
+  
+  .owl-carousel.home-slider .slider-item .slider-text {
+    pointer-events: auto;
+  }
+  
+  /* Override Owl Carousel's touch-action settings */
+  .owl-carousel.owl-drag .owl-item {
+    touch-action: pan-y !important;
+    -ms-touch-action: pan-y !important;
+  }
+  
+  .owl-carousel .owl-stage {
+    touch-action: pan-y !important;
+    -ms-touch-action: pan-y !important;
+  }
+  
+  .owl-carousel .owl-stage-outer {
+    touch-action: pan-y !important;
+    -ms-touch-action: pan-y !important;
+  }
+}
+
+/* Ensure the carousel doesn't block page scrolling */
+.owl-carousel.home-slider {
+  position: relative;
+  height: 750px;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Allow scrolling on mobile devices */
+@media (max-width: 767.98px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .owl-carousel.home-slider {
+    height: 100vh;
+    min-height: 500px;
+  }
+  
+  .owl-carousel.home-slider .slider-item {
+    height: 100vh;
+    min-height: 500px;
+  }
+  
+  .owl-carousel.home-slider .slider-item .slider-text {
+    height: 100vh;
+    min-height: 500px;
+  }
+}
