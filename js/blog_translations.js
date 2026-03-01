@@ -1,4 +1,4 @@
-const translations = {
+const blogTranslations = {
     en: {
         nav_home: "Home",
         nav_menu: "Menu",
@@ -15,6 +15,19 @@ const translations = {
         blog_title: "Blog",
         breadcrumb_home: "Home",
         breadcrumb_blog: "Blog",
+        blog_loading_posts: "Loading blog posts...",
+        blog_no_posts_title: "No Posts Yet",
+        blog_no_posts_text: "No published blog posts are available right now.",
+        blog_load_error: "Could not load blog posts right now.",
+        blog_unknown_date: "Unknown date",
+        blog_untitled_post: "Untitled Post",
+        blog_general_category: "General",
+        blog_search_placeholder: "Search blog posts or categories...",
+        blog_categories_placeholder: "Categories",
+        sidebar_category_all: "All",
+        pagination_previous: "Previous",
+        pagination_next: "Next",
+        pagination_page_of: "Page {current} of {total}",
         coming_soon_title: "Coming Soon",
         coming_soon_text: "Our blog is brewing! Stay tuned for updates.",
         footer_about_us_title: "About Us",
@@ -29,7 +42,7 @@ const translations = {
         footer_address: "203 Fake St. Mountain View, San Francisco, California, USA",
         footer_phone: "+2 392 3929 210",
         footer_email: "info@yourdomain.com",
-        footer_copyright: "Copyright © All rights reserved | FREELANCE SOLUTIONS"
+        footer_copyright: "Copyright © {year} All rights reserved | <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     },
     fr: {
         nav_home: "Accueil",
@@ -47,6 +60,19 @@ const translations = {
         blog_title: "Blog",
         breadcrumb_home: "Accueil",
         breadcrumb_blog: "Blog",
+        blog_loading_posts: "Chargement des articles...",
+        blog_no_posts_title: "Aucun article pour le moment",
+        blog_no_posts_text: "Aucun article publié n'est disponible pour le moment.",
+        blog_load_error: "Impossible de charger les articles pour le moment.",
+        blog_unknown_date: "Date inconnue",
+        blog_untitled_post: "Article sans titre",
+        blog_general_category: "Général",
+        blog_search_placeholder: "Rechercher des articles ou catégories...",
+        blog_categories_placeholder: "Catégories",
+        sidebar_category_all: "Toutes",
+        pagination_previous: "Précédent",
+        pagination_next: "Suivant",
+        pagination_page_of: "Page {current} sur {total}",
         coming_soon_title: "Bientôt Disponible",
         coming_soon_text: "Notre blog est en préparation ! Restez à l'écoute pour les mises à jour.",
         footer_about_us_title: "À Propos de Nous",
@@ -61,6 +87,8 @@ const translations = {
         footer_address: "203 Fake St. Mountain View, San Francisco, Californie, États-Unis",
         footer_phone: "+2 392 3929 210",
         footer_email: "info@yourdomain.com",
-        footer_copyright: "Copyright © Tous droits réservés | FREELANCE SOLUTIONS"
+        footer_copyright: "Copyright © {year} Tous droits réservés | <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     }
 };
+
+window.blogTranslations = blogTranslations;

@@ -14,8 +14,8 @@ const translations = {
         contact_form_email_placeholder: "Email",
         contact_form_message_placeholder: "Message...",
         contact_form_send_button: "Send it",
-        footer_copyright_menu: "Copyright 2025 FREELANCE SOLUTIONS. All rights reserved.",
-        footer_design_menu: "Design: FREELANCE SOLUTIONS"
+        footer_copyright_menu: "Copyright {year} <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>. All rights reserved.",
+        footer_design_menu: "Design: <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     },
     fr: {
         menu_page_title: "CAFE SAFI",
@@ -32,7 +32,7 @@ const translations = {
         contact_form_email_placeholder: "Email",
         contact_form_message_placeholder: "Message...",
         contact_form_send_button: "Envoyer",
-        footer_copyright_menu: "Copyright 2025 FREELANCE SOLUTIONS. Tous droits réservés.",
-        footer_design_menu: "Design: FREELANCE SOLUTIONS"
+        footer_copyright_menu: "Copyright {year} <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>. Tous droits réservés.",
+        footer_design_menu: "Design: <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     }
 };

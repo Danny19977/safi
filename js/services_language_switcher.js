@@ -7,10 +7,11 @@ function switchLanguage(lang) {
     document.querySelectorAll('[data-translate]').forEach(element => {
         const key = element.getAttribute('data-translate');
         if (translations[lang] && translations[lang][key]) {
+            const translatedValue = translations[lang][key].replace('{year}', new Date().getFullYear());
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = translations[lang][key];
+                element.placeholder = translatedValue;
             } else {
-                element.textContent = translations[lang][key];
+                element.innerHTML = translatedValue;
             }
         }
     });

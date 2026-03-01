@@ -28,10 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const translation = translations[this.currentLanguage][key];
                 
                 if (translation) {
+                    const formattedTranslation = translation.replace('{year}', new Date().getFullYear());
                     if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'email')) {
-                        element.placeholder = translation;
+                        element.placeholder = formattedTranslation;
                     } else {
-                        element.innerHTML = translation;
+                        element.innerHTML = formattedTranslation;
                     }
                 } else {
                     console.warn(`Translation key not found: ${key} for language: ${this.currentLanguage}`);

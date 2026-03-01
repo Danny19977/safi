@@ -68,7 +68,7 @@ const translations = {
         "footer_address": "115, Avenue Colonel Ebeya at the intersection of Avenues du Marché",
         "footer_phone": "0977068929",
         "footer_email": "safiagroup84@gmail.com",
-        "footer_copyright": "Copyright &copy; 2025 All rights reserved | by FREELANCE SOLUTIONS"
+        "footer_copyright": "Copyright &copy; {year} All rights reserved | by <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     },
     fr: {
         // Navbar
@@ -139,6 +139,6 @@ const translations = {
         "footer_address": "115, Avenue Colonel Ebeya à l'intersection des Avenues du Marché",
         "footer_phone": "0977068929",
         "footer_email": "safiagroup84@gmail.com",
-        "footer_copyright": "Copyright &copy; 2025 Tous droits réservés | par FREELANCE SOLUTIONS"
+        "footer_copyright": "Copyright &copy; {year} Tous droits réservés | par <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     }
 };

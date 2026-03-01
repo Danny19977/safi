@@ -8,16 +8,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($email && $password) {
         // Prepare statement to prevent SQL injection
-        $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
+        $stmt = $conn->prepare("SELECT users_id, password FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows === 1) {
-            $stmt->bind_result($hashed_password);
+            $stmt->bind_result($users_id, $hashed_password);
             $stmt->fetch();
 
             if (password_verify($password, $hashed_password)) {
+                $_SESSION['users_id'] = $users_id;
                 $_SESSION['user_email'] = $email;
                 header("Location: ../dashboard.html");
                 exit;

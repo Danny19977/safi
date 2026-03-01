@@ -83,7 +83,7 @@ const translations = {
             "en": "safiagroup84@gmail.com",
             "fr": "safiagroup84@gmail.com"
         },
-        "footer_copyright": "Copyright &copy; 2025 All rights reserved | by FREELANCE SOLUTIONS",
+        "footer_copyright": "Copyright &copy; {year} All rights reserved | by <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>",
         "footer_recent_blog_title": {
             "en": "Even the all-powerful Pointing has no control about",
             "fr": "Même le tout-puissant Pointing n'a aucun contrôle sur"
@@ -185,7 +185,7 @@ const translations = {
             "en": "safiagroup84@gmail.com",
             "fr": "safiagroup84@gmail.com"
         },
-        "footer_copyright": "Tous droits réservés | par FREELANCE SOLUTIONS",
+        "footer_copyright": "Copyright &copy; {year} Tous droits réservés | par <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>",
         "footer_recent_blog_title": {
             "en": "Even the all-powerful Pointing has no control about",
             "fr": "Même le tout-puissant Pointing n'a aucun contrôle sur"

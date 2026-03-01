@@ -201,11 +201,26 @@
       </div>
     </section> -->
 
-  <section class="ftco-section text-center"
-    style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+  <section class="ftco-section blog-coffee-section">
     <div class="container">
-      <h2 class="mb-4" style="font-size: 3rem;" data-translate="coming_soon_title">Coming Soon</h2>
-      <p class="lead" data-translate="coming_soon_text">Our blog is brewing! Stay tuned for updates.</p>
+      <div class="row mb-4">
+        <div class="col-md-8 mb-3 mb-md-0">
+          <input id="blogSearchInput" type="text" class="form-control" placeholder="Search blog posts or categories..." data-translate="blog_search_placeholder">
+        </div>
+        <div class="col-md-4">
+          <select id="blogCategorySelect" class="form-control">
+            <option value="" data-translate="blog_categories_placeholder">Categories</option>
+          </select>
+        </div>
+      </div>
+      <div class="row d-flex" id="blogPostsContainer">
+        <div class="col-12 text-center">
+          <p class="lead mb-0" data-translate="blog_loading_posts">Loading blog posts...</p>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 text-center" id="blogPostsPagination"></div>
+      </div>
     </div>
   </section>
 
@@ -284,7 +299,7 @@
         <div class="col-md-12 text-center">
           <p data-translate="footer_copyright">
             Copyright &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved | FREELANCE SOLUTIONS <i
+            <script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="https://freelancesoutions.vercel.app/" target="_blank" rel="noopener noreferrer">FREELANCE SOLUTIONS</a> <i
               class="icon-heart" aria-hidden="true"></i>
           </p>
         </div>
@@ -301,8 +316,6 @@
         stroke="#F96D00" />
     </svg></div>
 
-  <script src="js/translations.js"></script>
-  <script src="js/language_switcher.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -321,9 +334,11 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/blog_render.js"></script>
   <script src="js/blog_translations.js"></script>
   <script src="js/blog_language_switcher.js"></script>
 
+  <script src="js/site_translate.js"></script>
 </body>
 
 </html>

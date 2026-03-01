@@ -1,9 +1,12 @@
- AOS.init({
- 	duration: 800,
- 	easing: 'slide'
- });
+try {
+	if (typeof AOS !== 'undefined' && AOS && typeof AOS.init === 'function') {
+		AOS.init({
+			duration: 800,
+			easing: 'slide'
+		});
+	}
 
-(function($) {
+	(function($) {
 
 	"use strict";
 
@@ -294,5 +297,149 @@
 
 
 
-})(jQuery);
+	})(jQuery);
+} catch (mainScriptError) {
+	console.error('[MainJS] Non-fatal error in UI initialization:', mainScriptError);
+}
+
+(function () {
+	var footerText = {
+		en: {
+			no_recent_posts: 'No recent posts.'
+		},
+		fr: {
+			no_recent_posts: 'Aucun article récent.'
+		}
+	};
+
+	function getCurrentLanguage() {
+		var savedLanguage = localStorage.getItem('preferred-language') || 'en';
+		return footerText[savedLanguage] ? savedLanguage : 'en';
+	}
+
+	function t(key, fallback) {
+		var lang = getCurrentLanguage();
+		return (footerText[lang] && footerText[lang][key]) ? footerText[lang][key] : fallback;
+	}
+
+	function escapeHtml(value) {
+		return String(value || '')
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#39;');
+	}
+
+	function getApiUrl(endpoint) {
+		if (window.location.protocol === 'file:') {
+			return 'http://localhost/Cafe%20SAFI/php/' + endpoint;
+		}
+		return 'php/' + endpoint;
+	}
+
+	function formatDate(value) {
+		if (!value) {
+			return '';
+		}
+
+		var date = new Date(value);
+		if (Number.isNaN(date.getTime())) {
+			return String(value);
+		}
+
+		return date.toLocaleDateString();
+	}
+
+	function findFooterRecentBlogWidgets() {
+		var widgets = Array.prototype.slice.call(document.querySelectorAll('footer .ftco-footer-widget'));
+		var result = widgets.filter(function (widget) {
+			var heading = widget.querySelector('.ftco-heading-2, h2, h3');
+			if (!heading) {
+				return false;
+			}
+			var key = heading.getAttribute('data-translate') || '';
+			var text = (heading.textContent || '').toLowerCase();
+			var isRecent = key === 'footer_recent_blog_title'
+				|| key === 'footer_recent_blog'
+				|| text.indexOf('recent blog') !== -1
+				|| text.indexOf('blog récent') !== -1;
+			return isRecent;
+		});
+		return result;
+	}
+
+	function renderFooterRecentPosts(posts) {
+		var footerWidgets = findFooterRecentBlogWidgets();
+		if (footerWidgets.length === 0) {
+			return;
+		}
+
+		var displayPosts = Array.isArray(posts) ? posts.slice(0, 2) : [];
+
+		footerWidgets.forEach(function (widget) {
+			widget.querySelectorAll('.js-footer-recent-item, .js-footer-recent-empty').forEach(function (node) {
+				node.remove();
+			});
+
+			widget.querySelectorAll('.block-21').forEach(function (node) {
+				node.remove();
+			});
+
+			if (displayPosts.length === 0) {
+				var emptyNode = document.createElement('p');
+				emptyNode.className = 'mb-0 js-footer-recent-empty';
+				emptyNode.textContent = t('no_recent_posts', 'No recent posts.');
+				widget.appendChild(emptyNode);
+				return;
+			}
+
+			displayPosts.forEach(function (post) {
+				var image = (Array.isArray(post.images) && post.images.length > 0)
+					? post.images[0]
+					: (post.image_url || 'images/image_1.jpg');
+				var title = escapeHtml(post.title || 'Untitled Post');
+				var dateLabel = escapeHtml(formatDate(post.published_at));
+				var link = 'blog-single.html?ref=' + encodeURIComponent(post.ref || '');
+
+				widget.insertAdjacentHTML('beforeend', ''
+					+ '<div class="block-21 mb-4 d-flex js-footer-recent-item">'
+					+ '<a class="blog-img mr-4" href="' + link + '" style="background-image: url(' + escapeHtml(image) + ');"></a>'
+					+ '<div class="text">'
+					+ '<h3 class="heading"><a href="' + link + '">' + title + '</a></h3>'
+					+ '<div class="meta"><div><a href="' + link + '"><span class="icon-calendar"></span> ' + dateLabel + '</a></div></div>'
+					+ '</div>'
+					+ '</div>');
+			});
+		});
+	}
+
+	function loadFooterRecentPosts() {
+		var url = getApiUrl('get_blog_posts.php');
+		fetch(url, { cache: 'no-store' })
+			.then(function (response) {
+				if (!response.ok) {
+					throw new Error('HTTP ' + response.status);
+				}
+				return response.json();
+			})
+			.then(function (data) {
+				if (!data || !data.success || !Array.isArray(data.posts)) {
+					renderFooterRecentPosts([]);
+					return;
+				}
+
+				renderFooterRecentPosts(data.posts);
+			})
+			.catch(function () {
+				renderFooterRecentPosts([]);
+			});
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', loadFooterRecentPosts);
+	} else {
+		loadFooterRecentPosts();
+	}
+})();
 

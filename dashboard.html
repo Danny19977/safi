@@ -53,6 +53,48 @@
       text-align: center;
       border-bottom: 1px solid #445566;
     }
+
+    .dashboard-lang-switch {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dashboard-lang-switch .lang-label {
+      font-size: 12px;
+      color: #ecf0f1;
+      margin: 0;
+    }
+
+    .dashboard-lang-switch .btn {
+      padding: 2px 8px;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .main-lang-switch {
+      display: none;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .main-lang-switch .lang-label {
+      margin: 0;
+      font-size: 12px;
+      color: #212529;
+      font-weight: 600;
+    }
+
+    .main-lang-switch .btn {
+      padding: 2px 8px;
+      font-size: 12px;
+      line-height: 1.2;
+    }
     
     .sidebar-nav {
       list-style: none;
@@ -90,6 +132,87 @@
       padding: 20px;
       background-color: #fff;
       transition: margin-left 0.3s ease;
+    }
+
+    .main-content,
+    .main-content h1,
+    .main-content h2,
+    .main-content h3,
+    .main-content h4,
+    .main-content h5,
+    .main-content h6,
+    .main-content p,
+    .main-content label,
+    .main-content span,
+    .main-content strong,
+    .main-content small,
+    .main-content li,
+    .main-content td,
+    .main-content th {
+      color: #000;
+    }
+
+    .main-content .form-control,
+    .main-content .form-control:focus,
+    .main-content input,
+    .main-content input:focus,
+    .main-content textarea,
+    .main-content select {
+      color: #000 !important;
+      background-color: #fff !important;
+    }
+
+    .main-content select option {
+      color: #000 !important;
+      background-color: #fff !important;
+    }
+
+    .main-content .form-control::placeholder,
+    .main-content textarea::placeholder {
+      color: #6c757d;
+    }
+
+    .main-content textarea#blogContent,
+    .main-content textarea#blogContent:focus {
+      color: #000 !important;
+      -webkit-text-fill-color: #000;
+    }
+
+    .main-content .page-header,
+    .main-content .page-header h2,
+    .main-content .page-header p {
+      color: #fff;
+    }
+
+    .image-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .image-preview-item {
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .image-preview-item img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-preview-label {
+      font-size: 12px;
+      padding: 6px 8px;
+      color: #000;
+      font-weight: 600;
+      border-top: 1px solid #dee2e6;
+      background: #f8f9fa;
+      text-align: center;
     }
     
     .content-section {
@@ -142,6 +265,51 @@
       padding: 20px;
       margin-bottom: 20px;
       background: white;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .contact-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    .contact-table th,
+    .contact-table td {
+      border: 1px solid #dee2e6;
+      padding: 12px;
+      vertical-align: top;
+      color: #212529;
+      background: #fff;
+    }
+
+    .contact-table th {
+      background: #f8f9fa;
+      font-weight: 700;
+    }
+
+    .contact-table td {
+      word-break: break-word;
+    }
+
+    .notification-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: 999px;
+      background: #dc3545;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      margin-left: 8px;
+      line-height: 1;
     }
     
     .blog-meta {
@@ -236,6 +404,10 @@
     @media (max-width: 768px) {
       .sidebar {
         transform: translateX(-100%);
+      }
+
+      .main-lang-switch {
+        display: flex;
       }
       
       .sidebar.show {
@@ -359,37 +531,49 @@
     <div class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <h4>Café SAFI</h4>
-        <p class="mb-0">Admin Dashboard</p>
+        <p class="mb-0" data-dash-i18n="admin_dashboard">Admin Dashboard</p>
+        <div class="dashboard-lang-switch" aria-label="Dashboard language switcher">
+          <p class="lang-label dashboard-lang-label">Language:</p>
+          <button type="button" class="btn btn-sm btn-outline-light dashboard-lang-btn" data-lang="en">English</button>
+          <button type="button" class="btn btn-sm btn-outline-light dashboard-lang-btn" data-lang="fr">Français</button>
+        </div>
       </div>
       <ul class="sidebar-nav">
         <li>
           <a href="#" onclick="showPage('post-blog')" class="nav-link active" id="post-blog-nav">
             <i class="oi oi-plus"></i>
-            Post A Blog
+            <span data-dash-i18n="post_a_blog">Post A Blog</span>
           </a>
         </li>
         <li>
           <a href="#" onclick="showPage('view-blog')" class="nav-link" id="view-blog-nav">
             <i class="oi oi-eye"></i>
-            View Blogs
+            <span data-dash-i18n="view_blogs">View Blogs</span>
           </a>
         </li>
         <li>
           <a href="#" onclick="showPage('user-activity')" class="nav-link" id="user-activity-nav">
             <i class="oi oi-people"></i>
-            User Activity
+            <span data-dash-i18n="user_activity">User Activity</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showPage('contact-messages')" class="nav-link" id="contact-messages-nav">
+            <i class="oi oi-bell"></i>
+            <span data-dash-i18n="contact_messages">Contact Messages</span>
+            <span id="contactUnreadBadge" class="notification-badge" style="display:none;">0</span>
           </a>
         </li>
         <li>
           <a href="index.html" class="nav-link">
             <i class="oi oi-home"></i>
-            Back to Website
+            <span data-dash-i18n="back_to_website">Back to Website</span>
           </a>
         </li>
         <li>
           <a href="login.html" class="nav-link">
             <i class="oi oi-account-logout"></i>
-            Logout
+            <span data-dash-i18n="logout">Logout</span>
           </a>
         </li>
       </ul>
@@ -397,54 +581,56 @@
 
     <!-- Main Content -->
     <div class="main-content">
+      <div class="main-lang-switch" aria-label="Dashboard language quick switcher">
+        <p class="lang-label dashboard-lang-label">Language:</p>
+        <button type="button" class="btn btn-sm btn-outline-secondary dashboard-lang-btn" data-lang="en">English</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary dashboard-lang-btn" data-lang="fr">Français</button>
+      </div>
+
       <!-- Post Blog Page -->
       <div id="post-blog" class="content-section active">
         <div class="page-header">
-          <h2>Post A Blog</h2>
-          <p class="mb-0">Create and publish new blog posts for Café SAFI</p>
+          <h2 data-dash-i18n="post_a_blog">Post A Blog</h2>
+          <p class="mb-0" data-dash-i18n="post_blog_desc">Create and publish new blog posts for Café SAFI</p>
         </div>
         
         <div class="card">
           <div class="card-header">
-            <h5 class="mb-0" style="color: black;">Create New Blog Post</h5>
+            <h5 class="mb-0" style="color: black;" data-dash-i18n="create_new_blog_post">Create New Blog Post</h5>
           </div>
           <div class="card-body">
             <form id="blogForm" enctype="multipart/form-data" style="background: #fffbe6; border: 2px solid #c49b61; border-radius: 12px; box-shadow: 0 4px 18px rgba(196,155,97,0.12); padding: 32px 24px;">
               <div class="form-group mb-4">
-                <label for="blogTitle" style="font-weight:600;color:#c49b61;">Blog Title</label>
+                <label for="blogTitle" style="font-weight:600;color:#000;" data-dash-i18n="blog_title">Blog Title</label>
                 <input type="text" class="form-control" id="blogTitle" required style="border:2px solid #c49b61;">
               </div>
               
               <div class="form-group mb-4">
-                <label for="blogCategory" style="font-weight:600;color:#c49b61;">Category</label>
-                <select class="form-control" id="blogCategory" required style="border:2px solid #c49b61;">
-                  <option value="">Select Category</option>
-                  <option value="coffee">Coffee</option>
-                  <option value="recipes">Recipes</option>
-                  <option value="news">News</option>
-                  <option value="events">Events</option>
-                </select>
+                <label for="blogCategory" style="font-weight:600;color:#000;" data-dash-i18n="category">Category</label>
+                <input type="text" class="form-control" id="blogCategory" required placeholder="e.g. Coffee, Recipes, News, Events" data-dash-placeholder="category_placeholder" style="border:2px solid #c49b61;color:#000;background:#fff;">
               </div>
               
               <div class="form-group mb-4">
-                <label for="blogImage" style="font-weight:600;color:#c49b61;">Featured Image</label>
-                <input type="file" class="form-control" id="blogImage" accept="image/*" style="border:2px solid #c49b61;">
+                <label for="blogImages" style="font-weight:600;color:#000;" data-dash-i18n="blog_images">Blog Images (up to 10)</label>
+                <input type="file" class="form-control" id="blogImages" accept="image/*" multiple style="border:2px solid #c49b61;color:#000;background:#fff;">
+                <small class="d-block mt-2" style="color:#000;" data-dash-i18n="blog_images_help">Select up to 10 images. The first image is used as the cover.</small>
+                <div id="blogImagePreview" class="image-preview-grid"></div>
               </div>
               
               <div class="form-group mb-4">
-                <label for="blogContent" style="font-weight:600;color:#c49b61;">Content</label>
-                <textarea class="form-control" id="blogContent" rows="10" required style="border:2px solid #c49b61;"></textarea>
+                <label for="blogContent" style="font-weight:600;color:#000;" data-dash-i18n="content">Content</label>
+                <textarea class="form-control" id="blogContent" rows="10" required style="border:2px solid #c49b61;color:#000;background:#fff;"></textarea>
               </div>
               
               <div class="form-check mb-4">
                 <input type="checkbox" class="form-check-input" id="publishNow">
-                <label class="form-check-label" for="publishNow" style="color:#c49b61;">
+                <label class="form-check-label" for="publishNow" style="color:#000;" data-dash-i18n="publish_immediately">
                   Publish immediately
                 </label>
               </div>
               
               <button type="submit" class="btn btn-primary" style="font-size:1.1rem;padding:12px 32px;border-radius:8px;box-shadow:0 2px 8px rgba(196,155,97,0.18);">
-                <i class="oi oi-plus"></i> Create Blog Post
+                <i class="oi oi-plus"></i> <span data-dash-i18n="create_blog_post">Create Blog Post</span>
               </button>
             </form>
           </div>
@@ -454,47 +640,20 @@
       <!-- View Blogs Page -->
       <div id="view-blog" class="content-section">
         <div class="page-header">
-          <h2>View Blogs</h2>
-          <p class="mb-0">Manage and view all published blog posts</p>
+          <h2 data-dash-i18n="view_blogs">View Blogs</h2>
+          <p class="mb-0" data-dash-i18n="view_blogs_desc">Manage and view all published blog posts</p>
         </div>
         
         <div class="card">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">All Blog Posts</h5>
+            <h5 class="mb-0" data-dash-i18n="all_blog_posts">All Blog Posts</h5>
             <button class="btn btn-primary btn-sm" onclick="showPage('post-blog')">
-              <i class="oi oi-plus"></i> New Post
+              <i class="oi oi-plus"></i> <span data-dash-i18n="new_post">New Post</span>
             </button>
           </div>
           <div class="card-body">
             <div id="blogList">
-              <!-- Sample blog posts -->
-              <div class="blog-post">
-                <div class="blog-meta">
-                  <span><i class="oi oi-calendar"></i> March 15, 2024</span>
-                  <span class="ml-3"><i class="oi oi-tag"></i> Coffee</span>
-                  <span class="ml-3"><i class="oi oi-eye"></i> 245 views</span>
-                </div>
-                <h4>The Art of Coffee Brewing</h4>
-                <p>Discover the secrets behind perfect coffee brewing techniques used at Café SAFI...</p>
-                <div class="mt-3">
-                  <button class="btn btn-sm btn-outline-primary">Edit</button>
-                  <button class="btn btn-sm btn-outline-danger ml-2">Delete</button>
-                </div>
-              </div>
-              
-              <div class="blog-post">
-                <div class="blog-meta">
-                  <span><i class="oi oi-calendar"></i> March 10, 2024</span>
-                  <span class="ml-3"><i class="oi oi-tag"></i> Events</span>
-                  <span class="ml-3"><i class="oi oi-eye"></i> 189 views</span>
-                </div>
-                <h4>Coffee Tasting Event This Weekend</h4>
-                <p>Join us for an exclusive coffee tasting event featuring beans from Petit Kwilu...</p>
-                <div class="mt-3">
-                  <button class="btn btn-sm btn-outline-primary">Edit</button>
-                  <button class="btn btn-sm btn-outline-danger ml-2">Delete</button>
-                </div>
-              </div>
+              <p class="text-muted mb-0" data-dash-i18n="loading_published_posts">Loading published blog posts...</p>
             </div>
           </div>
         </div>
@@ -503,8 +662,8 @@
       <!-- User Activity Page -->
       <div id="user-activity" class="content-section">
         <div class="page-header">
-          <h2>User Activity</h2>
-          <p class="mb-0">Monitor user interactions and website analytics</p>
+          <h2 data-dash-i18n="user_activity">User Activity</h2>
+          <p class="mb-0" data-dash-i18n="user_activity_desc">Monitor user interactions and website analytics</p>
         </div>
         
         <div class="row">
@@ -512,7 +671,7 @@
             <div class="card">
               <div class="card-body text-center">
                 <h3 class="text-primary">1,234</h3>
-                <p class="mb-0">Total Visitors</p>
+                <p class="mb-0" data-dash-i18n="total_visitors">Total Visitors</p>
               </div>
             </div>
           </div>
@@ -520,7 +679,7 @@
             <div class="card">
               <div class="card-body text-center">
                 <h3 class="text-success">89</h3>
-                <p class="mb-0">Active Users</p>
+                <p class="mb-0" data-dash-i18n="active_users">Active Users</p>
               </div>
             </div>
           </div>
@@ -528,7 +687,7 @@
             <div class="card">
               <div class="card-body text-center">
                 <h3 class="text-warning">156</h3>
-                <p class="mb-0">Page Views</p>
+                <p class="mb-0" data-dash-i18n="page_views">Page Views</p>
               </div>
             </div>
           </div>
@@ -536,7 +695,7 @@
         
         <div class="card mt-4">
           <div class="card-header">
-            <h5 class="mb-0">Recent Activity</h5>
+            <h5 class="mb-0" data-dash-i18n="recent_activity">Recent Activity</h5>
           </div>
           <div class="card-body p-0">
             <div class="activity-item">
@@ -544,9 +703,9 @@
                 <i class="oi oi-person"></i>
               </div>
               <div>
-                <strong>New user registration</strong>
+                <strong data-dash-i18n="activity_new_user_registration">New user registration</strong>
                 <br>
-                <small class="text-muted">John Doe registered 2 hours ago</small>
+                <small class="text-muted" data-dash-i18n="activity_user_registered">John Doe registered 2 hours ago</small>
               </div>
             </div>
             
@@ -555,9 +714,9 @@
                 <i class="oi oi-eye"></i>
               </div>
               <div>
-                <strong>Blog post viewed</strong>
+                <strong data-dash-i18n="activity_blog_viewed">Blog post viewed</strong>
                 <br>
-                <small class="text-muted">"The Art of Coffee Brewing" viewed 15 times today</small>
+                <small class="text-muted" data-dash-i18n="activity_blog_viewed_detail">"The Art of Coffee Brewing" viewed 15 times today</small>
               </div>
             </div>
             
@@ -566,9 +725,9 @@
                 <i class="oi oi-comment-square"></i>
               </div>
               <div>
-                <strong>New contact message</strong>
+                <strong data-dash-i18n="activity_new_contact_message">New contact message</strong>
                 <br>
-                <small class="text-muted">Customer inquiry received 1 hour ago</small>
+                <small class="text-muted" data-dash-i18n="activity_contact_inquiry">Customer inquiry received 1 hour ago</small>
               </div>
             </div>
             
@@ -577,11 +736,57 @@
                 <i class="oi oi-cart"></i>
               </div>
               <div>
-                <strong>Menu item viewed</strong>
+                <strong data-dash-i18n="activity_menu_viewed">Menu item viewed</strong>
                 <br>
-                <small class="text-muted">Espresso menu page visited 45 times today</small>
+                <small class="text-muted" data-dash-i18n="activity_menu_viewed_detail">Espresso menu page visited 45 times today</small>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Messages Page -->
+      <div id="contact-messages" class="content-section">
+        <div class="page-header">
+          <h2 data-dash-i18n="contact_messages">Contact Messages</h2>
+          <p class="mb-0" data-dash-i18n="contact_messages_desc">Review messages submitted from the website contact form</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0" data-dash-i18n="inbox">Inbox</h5>
+            <div class="d-flex align-items-center" style="gap: 8px;">
+              <button class="btn btn-outline-secondary btn-sm" type="button" id="contactSortBtn" onclick="toggleContactSort()">
+                <i class="oi oi-sort-ascending"></i> Sort: Newest
+              </button>
+              <button class="btn btn-outline-secondary btn-sm" type="button" id="contactUnreadOnlyBtn" onclick="toggleContactUnreadOnly()">
+                <i class="oi oi-envelope-closed"></i> Unread only: Off
+              </button>
+              <button class="btn btn-outline-primary btn-sm" type="button" onclick="markAllContactRead()">
+                <i class="oi oi-check"></i> <span data-dash-i18n="mark_all_read">Mark all read</span>
+              </button>
+              <button class="btn btn-primary btn-sm" type="button" onclick="loadContactMessages()">
+                <i class="oi oi-reload"></i> <span data-dash-i18n="refresh">Refresh</span>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-group mb-3">
+              <input
+                id="contactSearch"
+                type="text"
+                class="form-control"
+                placeholder="Search by name, email, subject, or message"
+                data-dash-placeholder="contact_search_placeholder"
+                aria-label="Search contact messages"
+              >
+              <small class="text-muted" data-dash-i18n="contact_search_help">Type to filter messages instantly.</small>
+            </div>
+            <div id="contactList" class="table-wrap">
+              <p class="text-muted mb-0" data-dash-i18n="loading_contact_messages">Loading contact messages...</p>
+            </div>
+            <div id="contactPagination" class="d-flex justify-content-between align-items-center mt-3" style="gap: 8px;"></div>
+            <small id="contactReadStatus" class="text-muted d-block mt-2" style="display:none;"></small>
           </div>
         </div>
       </div>
@@ -617,6 +822,711 @@
   <script src="js/main.js"></script>
   
   <script>
+    const categoryMap = {
+      1: 'Coffee',
+      2: 'Recipes',
+      3: 'News',
+      4: 'Events'
+    };
+
+    const dashboardTranslations = {
+      en: {
+        admin_dashboard: 'Admin Dashboard',
+        post_a_blog: 'Post A Blog',
+        view_blogs: 'View Blogs',
+        user_activity: 'User Activity',
+        contact_messages: 'Contact Messages',
+        back_to_website: 'Back to Website',
+        logout: 'Logout',
+        post_blog_desc: 'Create and publish new blog posts for Café SAFI',
+        create_new_blog_post: 'Create New Blog Post',
+        blog_title: 'Blog Title',
+        category: 'Category',
+        category_coffee: 'Coffee',
+        category_recipes: 'Recipes',
+        category_news: 'News',
+        category_events: 'Events',
+        category_general: 'General',
+        category_placeholder: 'e.g. Coffee, Recipes, News, Events',
+        blog_images: 'Blog Images (up to 10)',
+        blog_images_help: 'Select up to 10 images. The first image is used as the cover.',
+        content: 'Content',
+        publish_immediately: 'Publish immediately',
+        create_blog_post: 'Create Blog Post',
+        view_blogs_desc: 'Manage and view all published blog posts',
+        all_blog_posts: 'All Blog Posts',
+        new_post: 'New Post',
+        loading_published_posts: 'Loading published blog posts...',
+        no_published_posts: 'No published posts yet.',
+        could_not_load_blog_posts: 'Could not load blog posts.',
+        contact_messages_desc: 'Review messages submitted from the website contact form',
+        inbox: 'Inbox',
+        mark_all_read: 'Mark all read',
+        refresh: 'Refresh',
+        contact_search_placeholder: 'Search by name, email, subject, or message',
+        contact_search_help: 'Type to filter messages instantly.',
+        loading_contact_messages: 'Loading contact messages...',
+        sort_newest: 'Sort: Newest',
+        sort_oldest: 'Sort: Oldest',
+        unread_only_on: 'Unread only: On',
+        unread_only_off: 'Unread only: Off',
+        no_contact_messages: 'No contact messages yet.',
+        table_no: 'No.',
+        table_full_name: 'Full Name',
+        table_email: 'Email',
+        table_subject: 'Subject',
+        table_message: 'Message',
+        table_actions: 'Actions',
+        delete: 'Delete',
+        showing_messages_single: 'Showing {total} message',
+        showing_messages_plural: 'Showing {total} messages',
+        showing_range: 'Showing {from}-{to} of {total}',
+        page_of: 'Page {current} / {total}',
+        prev: 'Prev',
+        next: 'Next',
+        marked_read: 'Marked {count} as read',
+        could_not_load_contact: 'Could not load contact messages.',
+        user_activity_desc: 'Monitor user interactions and website analytics',
+        total_visitors: 'Total Visitors',
+        active_users: 'Active Users',
+        page_views: 'Page Views',
+        recent_activity: 'Recent Activity',
+        activity_new_user_registration: 'New user registration',
+        activity_user_registered: 'John Doe registered 2 hours ago',
+        activity_blog_viewed: 'Blog post viewed',
+        activity_blog_viewed_detail: '"The Art of Coffee Brewing" viewed 15 times today',
+        activity_new_contact_message: 'New contact message',
+        activity_contact_inquiry: 'Customer inquiry received 1 hour ago',
+        activity_menu_viewed: 'Menu item viewed',
+        activity_menu_viewed_detail: 'Espresso menu page visited 45 times today',
+        confirm_delete_contact: 'Delete this message? This action cannot be undone.',
+        toast_contact_deleted: 'Contact message deleted successfully.',
+        toast_delete_failed: 'Could not delete message.',
+        toast_delete_failed_retry: 'Could not delete message. Please try again.',
+        toast_mark_read_success: 'All contact messages marked as read.',
+        toast_mark_read_failed: 'Could not mark messages as read.',
+        toast_mark_read_failed_retry: 'Could not mark messages as read. Please try again.',
+        toast_blog_max_images: 'You can upload a maximum of 10 images per blog post.',
+        toast_blog_posted: 'Blog successfully posted.',
+        toast_blog_post_error_prefix: 'Error: ',
+        toast_blog_post_default_error: 'Could not post blog.',
+        toast_blog_posting_error: 'Error posting blog.',
+        toast_blog_images_selected_more: 'You selected more than 10 images. Only the first 10 will be used.'
+      },
+      fr: {
+        admin_dashboard: 'Tableau de bord admin',
+        post_a_blog: 'Publier un article',
+        view_blogs: 'Voir les articles',
+        user_activity: 'Activité des utilisateurs',
+        contact_messages: 'Messages de contact',
+        back_to_website: 'Retour au site',
+        logout: 'Déconnexion',
+        post_blog_desc: 'Créer et publier de nouveaux articles pour Café SAFI',
+        create_new_blog_post: 'Créer un nouvel article',
+        blog_title: 'Titre de l’article',
+        category: 'Catégorie',
+        category_coffee: 'Café',
+        category_recipes: 'Recettes',
+        category_news: 'Actualités',
+        category_events: 'Événements',
+        category_general: 'Général',
+        category_placeholder: 'ex. Café, Recettes, Actualités, Événements',
+        blog_images: 'Images de l’article (jusqu’à 10)',
+        blog_images_help: 'Sélectionnez jusqu’à 10 images. La première image est utilisée comme couverture.',
+        content: 'Contenu',
+        publish_immediately: 'Publier immédiatement',
+        create_blog_post: 'Créer l’article',
+        view_blogs_desc: 'Gérer et consulter tous les articles publiés',
+        all_blog_posts: 'Tous les articles',
+        new_post: 'Nouvel article',
+        loading_published_posts: 'Chargement des articles publiés...',
+        no_published_posts: 'Aucun article publié pour le moment.',
+        could_not_load_blog_posts: 'Impossible de charger les articles.',
+        contact_messages_desc: 'Consulter les messages envoyés depuis le formulaire de contact',
+        inbox: 'Boîte de réception',
+        mark_all_read: 'Tout marquer comme lu',
+        refresh: 'Actualiser',
+        contact_search_placeholder: 'Rechercher par nom, email, sujet ou message',
+        contact_search_help: 'Tapez pour filtrer les messages instantanément.',
+        loading_contact_messages: 'Chargement des messages de contact...',
+        sort_newest: 'Tri : plus récents',
+        sort_oldest: 'Tri : plus anciens',
+        unread_only_on: 'Non lus seulement : Activé',
+        unread_only_off: 'Non lus seulement : Désactivé',
+        no_contact_messages: 'Aucun message de contact pour le moment.',
+        table_no: 'N°',
+        table_full_name: 'Nom complet',
+        table_email: 'Email',
+        table_subject: 'Sujet',
+        table_message: 'Message',
+        table_actions: 'Actions',
+        delete: 'Supprimer',
+        showing_messages_single: 'Affichage de {total} message',
+        showing_messages_plural: 'Affichage de {total} messages',
+        showing_range: 'Affichage de {from}-{to} sur {total}',
+        page_of: 'Page {current} / {total}',
+        prev: 'Précédent',
+        next: 'Suivant',
+        marked_read: '{count} marqués comme lus',
+        could_not_load_contact: 'Impossible de charger les messages de contact.',
+        user_activity_desc: 'Surveiller les interactions des utilisateurs et les analyses du site',
+        total_visitors: 'Visiteurs totaux',
+        active_users: 'Utilisateurs actifs',
+        page_views: 'Pages vues',
+        recent_activity: 'Activité récente',
+        activity_new_user_registration: 'Nouvelle inscription utilisateur',
+        activity_user_registered: 'John Doe s\'est inscrit il y a 2 heures',
+        activity_blog_viewed: 'Article consulté',
+        activity_blog_viewed_detail: '"L\'art de préparer le café" consulté 15 fois aujourd\'hui',
+        activity_new_contact_message: 'Nouveau message de contact',
+        activity_contact_inquiry: 'Demande client reçue il y a 1 heure',
+        activity_menu_viewed: 'Élément du menu consulté',
+        activity_menu_viewed_detail: 'La page du menu Espresso a été visitée 45 fois aujourd\'hui',
+        confirm_delete_contact: 'Supprimer ce message ? Cette action est irréversible.',
+        toast_contact_deleted: 'Message de contact supprimé avec succès.',
+        toast_delete_failed: 'Impossible de supprimer le message.',
+        toast_delete_failed_retry: 'Impossible de supprimer le message. Veuillez réessayer.',
+        toast_mark_read_success: 'Tous les messages de contact ont été marqués comme lus.',
+        toast_mark_read_failed: 'Impossible de marquer les messages comme lus.',
+        toast_mark_read_failed_retry: 'Impossible de marquer les messages comme lus. Veuillez réessayer.',
+        toast_blog_max_images: 'Vous pouvez téléverser un maximum de 10 images par article.',
+        toast_blog_posted: 'Article publié avec succès.',
+        toast_blog_post_error_prefix: 'Erreur : ',
+        toast_blog_post_default_error: 'Impossible de publier l\'article.',
+        toast_blog_posting_error: 'Erreur lors de la publication de l\'article.',
+        toast_blog_images_selected_more: 'Vous avez sélectionné plus de 10 images. Seules les 10 premières seront utilisées.'
+      }
+    };
+
+    let allContactMessages = [];
+    let contactSortMode = 'newest';
+    let contactUnreadOnly = false;
+    let contactCurrentPage = 1;
+    let contactMarkVisibleReadInFlight = false;
+    let contactReadStatusTimer = null;
+    let currentDashboardLanguage = 'en';
+    const CONTACT_PAGE_SIZE = 10;
+
+    function translateDashboard(key, vars = {}) {
+      const lang = dashboardTranslations[currentDashboardLanguage] ? currentDashboardLanguage : 'en';
+      const fallbackText = dashboardTranslations.en[key] || key;
+      let text = (dashboardTranslations[lang] && dashboardTranslations[lang][key]) || fallbackText;
+
+      Object.keys(vars).forEach((varKey) => {
+        text = text.replace(new RegExp(`\\{${varKey}\\}`, 'g'), String(vars[varKey]));
+      });
+
+      return text;
+    }
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function formatDate(dateString) {
+      if (!dateString) return 'Unknown date';
+      const date = new Date(dateString);
+      if (Number.isNaN(date.getTime())) return dateString;
+      return date.toLocaleDateString();
+    }
+
+    function renderImagePreviews(files) {
+      const previewContainer = document.getElementById('blogImagePreview');
+      if (!previewContainer) {
+        return;
+      }
+
+      previewContainer.innerHTML = '';
+
+      files.slice(0, 10).forEach((file, index) => {
+        if (!file.type || !file.type.startsWith('image/')) {
+          return;
+        }
+
+        const imageUrl = URL.createObjectURL(file);
+        const item = document.createElement('div');
+        item.className = 'image-preview-item';
+
+        const image = document.createElement('img');
+        image.src = imageUrl;
+        image.alt = 'Selected image preview';
+        image.onload = function () {
+          URL.revokeObjectURL(imageUrl);
+        };
+
+        const label = document.createElement('div');
+        label.className = 'image-preview-label';
+        label.textContent = index === 0 ? 'Image 1 (Cover)' : `Image ${index + 1}`;
+
+        item.appendChild(image);
+        item.appendChild(label);
+        previewContainer.appendChild(item);
+      });
+    }
+
+    function renderDashboardBlogs(posts) {
+      const blogList = document.getElementById('blogList');
+
+      if (!Array.isArray(posts) || posts.length === 0) {
+        blogList.innerHTML = `<p class="text-muted mb-0">${escapeHtml(translateDashboard('no_published_posts'))}</p>`;
+        return;
+      }
+
+      blogList.innerHTML = posts.map(post => {
+        const categoryLabelMap = {
+          1: translateDashboard('category_coffee'),
+          2: translateDashboard('category_recipes'),
+          3: translateDashboard('category_news'),
+          4: translateDashboard('category_events')
+        };
+        const categoryLabel = categoryLabelMap[Number(post.category_id)] || translateDashboard('category_general');
+        const title = escapeHtml(post.title || 'Untitled Post');
+        const excerpt = escapeHtml(post.excerpt || '');
+        const dateLabel = escapeHtml(formatDate(post.published_at));
+
+        return `
+          <div class="blog-post">
+            <div class="blog-meta">
+              <span><i class="oi oi-calendar"></i> ${dateLabel}</span>
+              <span class="ml-3"><i class="oi oi-tag"></i> ${escapeHtml(categoryLabel)}</span>
+            </div>
+            <h4>${title}</h4>
+            <p>${excerpt}</p>
+            <div class="mt-3">
+              <a class="btn btn-sm btn-outline-primary" href="blog-single.html?ref=${encodeURIComponent(post.ref || '')}" target="_blank">Open</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function loadDashboardBlogs() {
+      fetch('php/get_blog_posts.php')
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.success) {
+            renderDashboardBlogs(data.posts || []);
+            return;
+          }
+          renderDashboardBlogs([]);
+        })
+        .catch(() => {
+          const blogList = document.getElementById('blogList');
+          blogList.innerHTML = `<p class="text-danger mb-0">${escapeHtml(translateDashboard('could_not_load_blog_posts'))}</p>`;
+        });
+    }
+
+    function renderContactMessages(messages, startIndex = 0) {
+      const contactList = document.getElementById('contactList');
+      const contactPagination = document.getElementById('contactPagination');
+
+      if (!Array.isArray(messages) || messages.length === 0) {
+        contactList.innerHTML = `<p class="text-muted mb-0">${escapeHtml(translateDashboard('no_contact_messages'))}</p>`;
+        if (contactPagination) {
+          contactPagination.innerHTML = '';
+        }
+        return;
+      }
+
+      const rows = messages.map((item, index) => {
+        const rowClass = Number(item.is_read) === 0 ? ' style="background:#fff8e1;"' : '';
+        const rawUuid = String(item.uuid || '');
+        const safeUuidForJs = rawUuid.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
+        return `
+          <tr${rowClass}>
+            <td>${startIndex + index + 1}</td>
+            <td>${escapeHtml(item.fullname || '')}</td>
+            <td>${escapeHtml(item.email || '')}</td>
+            <td>${escapeHtml(item.subject || '')}</td>
+            <td>${escapeHtml(item.message || '')}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-danger" type="button" onclick="deleteContactMessage('${safeUuidForJs}')">
+                <i class="oi oi-trash"></i> ${escapeHtml(translateDashboard('delete'))}
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      contactList.innerHTML = `
+        <table class="contact-table" aria-label="Contact messages table">
+          <thead>
+            <tr>
+              <th scope="col">${escapeHtml(translateDashboard('table_no'))}</th>
+              <th scope="col">${escapeHtml(translateDashboard('table_full_name'))}</th>
+              <th scope="col">${escapeHtml(translateDashboard('table_email'))}</th>
+              <th scope="col">${escapeHtml(translateDashboard('table_subject'))}</th>
+              <th scope="col">${escapeHtml(translateDashboard('table_message'))}</th>
+              <th scope="col">${escapeHtml(translateDashboard('table_actions'))}</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+
+    function renderContactPagination(totalItems, totalPages) {
+      const contactPagination = document.getElementById('contactPagination');
+      if (!contactPagination) {
+        return;
+      }
+
+      if (!totalItems || totalPages <= 1) {
+        contactPagination.innerHTML = totalItems
+          ? `<small class="text-muted">${escapeHtml(totalItems === 1 ? translateDashboard('showing_messages_single', { total: totalItems }) : translateDashboard('showing_messages_plural', { total: totalItems }))}</small>`
+          : '';
+        return;
+      }
+
+      const from = ((contactCurrentPage - 1) * CONTACT_PAGE_SIZE) + 1;
+      const to = Math.min(contactCurrentPage * CONTACT_PAGE_SIZE, totalItems);
+
+      contactPagination.innerHTML = `
+        <small class="text-muted">${escapeHtml(translateDashboard('showing_range', { from: from, to: to, total: totalItems }))}</small>
+        <div>
+          <button class="btn btn-sm btn-outline-secondary mr-2" type="button" ${contactCurrentPage <= 1 ? 'disabled' : ''} onclick="goToContactPage(${contactCurrentPage - 1})">
+            <i class="oi oi-chevron-left"></i> ${escapeHtml(translateDashboard('prev'))}
+          </button>
+          <span class="mr-2" style="font-weight:600;color:#212529;">${escapeHtml(translateDashboard('page_of', { current: contactCurrentPage, total: totalPages }))}</span>
+          <button class="btn btn-sm btn-outline-secondary" type="button" ${contactCurrentPage >= totalPages ? 'disabled' : ''} onclick="goToContactPage(${contactCurrentPage + 1})">
+            ${escapeHtml(translateDashboard('next'))} <i class="oi oi-chevron-right"></i>
+          </button>
+        </div>
+      `;
+    }
+
+    function updateContactUnreadBadge(unreadCount) {
+      const badge = document.getElementById('contactUnreadBadge');
+      if (!badge) {
+        return;
+      }
+
+      const count = Number(unreadCount) || 0;
+      badge.textContent = String(count);
+      badge.style.display = count > 0 ? 'inline-flex' : 'none';
+    }
+
+    function sortContactMessages(messages) {
+      const items = Array.isArray(messages) ? [...messages] : [];
+
+      items.sort((left, right) => {
+        const leftTime = new Date(left.created_at || 0).getTime();
+        const rightTime = new Date(right.created_at || 0).getTime();
+
+        if (contactSortMode === 'oldest') {
+          return leftTime - rightTime;
+        }
+
+        return rightTime - leftTime;
+      });
+
+      return items;
+    }
+
+    function applyContactFilter(resetPage = false) {
+      const searchInput = document.getElementById('contactSearch');
+      const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+      let filteredMessages = sortContactMessages(allContactMessages);
+
+      if (resetPage) {
+        contactCurrentPage = 1;
+      }
+
+      if (contactUnreadOnly) {
+        filteredMessages = filteredMessages.filter((item) => Number(item.is_read) === 0);
+      }
+
+      const finalMessages = !query
+        ? filteredMessages
+        : filteredMessages.filter((item) => {
+            const haystack = [
+              item.uuid,
+              item.fullname,
+              item.email,
+              item.subject,
+              item.message
+            ].map(value => String(value || '').toLowerCase()).join(' ');
+
+            return haystack.includes(query);
+          });
+
+      const totalItems = finalMessages.length;
+      const totalPages = Math.max(1, Math.ceil(totalItems / CONTACT_PAGE_SIZE));
+
+      if (contactCurrentPage > totalPages) {
+        contactCurrentPage = totalPages;
+      }
+
+      const startIndex = (contactCurrentPage - 1) * CONTACT_PAGE_SIZE;
+      const paginatedItems = finalMessages.slice(startIndex, startIndex + CONTACT_PAGE_SIZE);
+
+      renderContactMessages(paginatedItems, startIndex);
+      renderContactPagination(totalItems, totalPages);
+
+      if (isContactMessagesPageActive()) {
+        markVisibleContactMessagesRead(paginatedItems);
+      }
+    }
+
+    function isContactMessagesPageActive() {
+      const section = document.getElementById('contact-messages');
+      return !!section && section.classList.contains('active');
+    }
+
+    function markVisibleContactMessagesRead(messages) {
+      if (contactMarkVisibleReadInFlight) {
+        return;
+      }
+
+      const uuidsToMark = (Array.isArray(messages) ? messages : [])
+        .filter((item) => Number(item.is_read) === 0 && String(item.uuid || '').trim() !== '')
+        .map((item) => String(item.uuid));
+
+      if (uuidsToMark.length === 0) {
+        return;
+      }
+
+      contactMarkVisibleReadInFlight = true;
+      const formData = new FormData();
+      uuidsToMark.forEach((uuid) => {
+        formData.append('uuids[]', uuid);
+      });
+
+      fetch('php/mark_contact_messages_read.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.success) {
+            const updatedCount = Number(data.updated_count || 0);
+            if (updatedCount > 0) {
+              showContactReadStatus(translateDashboard('marked_read', { count: updatedCount }));
+            }
+            loadContactMessages(false);
+          }
+        })
+        .catch(() => {
+          // Silent fail for auto-read behavior
+        })
+        .finally(() => {
+          contactMarkVisibleReadInFlight = false;
+        });
+    }
+
+    function showContactReadStatus(message) {
+      const status = document.getElementById('contactReadStatus');
+      if (!status) {
+        return;
+      }
+
+      status.textContent = message;
+      status.style.display = 'block';
+
+      if (contactReadStatusTimer) {
+        clearTimeout(contactReadStatusTimer);
+      }
+
+      contactReadStatusTimer = setTimeout(() => {
+        status.style.display = 'none';
+      }, 2200);
+    }
+
+    function goToContactPage(page) {
+      if (page < 1) {
+        return;
+      }
+
+      contactCurrentPage = page;
+      applyContactFilter(false);
+    }
+
+    function toggleContactSort() {
+      contactSortMode = contactSortMode === 'newest' ? 'oldest' : 'newest';
+
+      const sortButton = document.getElementById('contactSortBtn');
+      if (sortButton) {
+        sortButton.innerHTML = contactSortMode === 'newest'
+          ? `<i class="oi oi-sort-ascending"></i> ${escapeHtml(translateDashboard('sort_newest'))}`
+          : `<i class="oi oi-sort-descending"></i> ${escapeHtml(translateDashboard('sort_oldest'))}`;
+      }
+
+      applyContactFilter(true);
+    }
+
+    function toggleContactUnreadOnly() {
+      contactUnreadOnly = !contactUnreadOnly;
+
+      const unreadOnlyButton = document.getElementById('contactUnreadOnlyBtn');
+      if (unreadOnlyButton) {
+        unreadOnlyButton.classList.remove('btn-outline-secondary', 'btn-primary');
+        unreadOnlyButton.classList.add(contactUnreadOnly ? 'btn-primary' : 'btn-outline-secondary');
+        unreadOnlyButton.innerHTML = contactUnreadOnly
+          ? `<i class="oi oi-envelope-open"></i> ${escapeHtml(translateDashboard('unread_only_on'))}`
+          : `<i class="oi oi-envelope-closed"></i> ${escapeHtml(translateDashboard('unread_only_off'))}`;
+      }
+
+      applyContactFilter(true);
+    }
+
+    function deleteContactMessage(uuid) {
+      if (!uuid) {
+        return;
+      }
+
+      const shouldDelete = window.confirm(translateDashboard('confirm_delete_contact'));
+      if (!shouldDelete) {
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('uuid', uuid);
+
+      fetch('php/delete_contact_message.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.success) {
+            showDashboardToast(translateDashboard('toast_contact_deleted'), 'success');
+            loadContactMessages();
+            return;
+          }
+
+          showDashboardToast((data && data.message) ? data.message : translateDashboard('toast_delete_failed'), 'error');
+        })
+        .catch(() => {
+          showDashboardToast(translateDashboard('toast_delete_failed_retry'), 'error');
+        });
+    }
+
+    function showDashboardToast(message, type) {
+      const toast = document.getElementById('dashboardToast');
+      if (!toast) {
+        return;
+      }
+
+      toast.textContent = message;
+      toast.style.background = type === 'success' ? '#28a745' : '#dc3545';
+      toast.style.display = 'block';
+
+      if (window.dashboardToastTimer) {
+        clearTimeout(window.dashboardToastTimer);
+      }
+
+      window.dashboardToastTimer = setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2500);
+    }
+
+    function markAllContactRead(silent = false) {
+      fetch('php/mark_contact_read.php', {
+        method: 'POST'
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.success) {
+            if (!silent) {
+              showDashboardToast(translateDashboard('toast_mark_read_success'), 'success');
+            }
+            loadContactMessages();
+            return;
+          }
+
+          if (!silent) {
+            showDashboardToast((data && data.message) ? data.message : translateDashboard('toast_mark_read_failed'), 'error');
+          }
+        })
+        .catch(() => {
+          if (!silent) {
+            showDashboardToast(translateDashboard('toast_mark_read_failed_retry'), 'error');
+          }
+        });
+    }
+
+    function loadContactMessages(resetPage = true) {
+      fetch('php/get_contact_messages.php')
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.success) {
+            allContactMessages = Array.isArray(data.messages) ? data.messages : [];
+            updateContactUnreadBadge(data.unread_count || 0);
+            applyContactFilter(resetPage);
+            return;
+          }
+          allContactMessages = [];
+          updateContactUnreadBadge(0);
+          renderContactMessages([]);
+          renderContactPagination(0, 0);
+        })
+        .catch(() => {
+          allContactMessages = [];
+          updateContactUnreadBadge(0);
+          const contactList = document.getElementById('contactList');
+          contactList.innerHTML = `<p class="text-danger mb-0">${escapeHtml(translateDashboard('could_not_load_contact'))}</p>`;
+          const contactPagination = document.getElementById('contactPagination');
+          if (contactPagination) {
+            contactPagination.innerHTML = '';
+          }
+        });
+    }
+
+    function applyDashboardTranslations(lang) {
+      const normalizedLanguage = String(lang || 'en').toLowerCase().slice(0, 2);
+      currentDashboardLanguage = normalizedLanguage === 'fr' ? 'fr' : 'en';
+
+      document.querySelectorAll('[data-dash-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-dash-i18n');
+        if (!key) {
+          return;
+        }
+        element.textContent = translateDashboard(key);
+      });
+
+      document.querySelectorAll('[data-dash-placeholder]').forEach((element) => {
+        const key = element.getAttribute('data-dash-placeholder');
+        if (!key) {
+          return;
+        }
+        element.setAttribute('placeholder', translateDashboard(key));
+      });
+
+      const sortButton = document.getElementById('contactSortBtn');
+      if (sortButton) {
+        sortButton.innerHTML = contactSortMode === 'newest'
+          ? `<i class="oi oi-sort-ascending"></i> ${escapeHtml(translateDashboard('sort_newest'))}`
+          : `<i class="oi oi-sort-descending"></i> ${escapeHtml(translateDashboard('sort_oldest'))}`;
+      }
+
+      const unreadOnlyButton = document.getElementById('contactUnreadOnlyBtn');
+      if (unreadOnlyButton) {
+        unreadOnlyButton.innerHTML = contactUnreadOnly
+          ? `<i class="oi oi-envelope-open"></i> ${escapeHtml(translateDashboard('unread_only_on'))}`
+          : `<i class="oi oi-envelope-closed"></i> ${escapeHtml(translateDashboard('unread_only_off'))}`;
+      }
+
+      loadDashboardBlogs();
+
+      const blogList = document.getElementById('blogList');
+      if (blogList && !blogList.children.length) {
+        blogList.innerHTML = `<p class="text-muted mb-0">${escapeHtml(translateDashboard('loading_published_posts'))}</p>`;
+      }
+
+      const contactList = document.getElementById('contactList');
+      if (contactList && !contactList.children.length) {
+        contactList.innerHTML = `<p class="text-muted mb-0">${escapeHtml(translateDashboard('loading_contact_messages'))}</p>`;
+      }
+
+      applyContactFilter(false);
+    }
+
     function showPage(pageId) {
       // Hide all content sections
       document.querySelectorAll('.content-section').forEach(section => {
@@ -633,6 +1543,14 @@
       
       // Add active class to selected nav link
       document.getElementById(pageId + '-nav').classList.add('active');
+
+      if (pageId === 'view-blog') {
+        loadDashboardBlogs();
+      }
+
+      if (pageId === 'contact-messages') {
+        loadContactMessages(true);
+      }
       
       // Close sidebar on mobile after navigation
       if (window.innerWidth <= 768) {
@@ -665,9 +1583,17 @@
       formData.append('content', document.getElementById('blogContent').value);
       formData.append('category_id', document.getElementById('blogCategory').value);
       formData.append('publishNow', document.getElementById('publishNow').checked ? 'true' : 'false');
-      if (document.getElementById('blogImage').files[0]) {
-        formData.append('image', document.getElementById('blogImage').files[0]);
+      const imageInput = document.getElementById('blogImages');
+      const selectedImages = imageInput && imageInput.files ? Array.from(imageInput.files) : [];
+
+      if (selectedImages.length > 10) {
+        showDashboardToast(translateDashboard('toast_blog_max_images'), 'error');
+        return;
       }
+
+      selectedImages.forEach(file => {
+        formData.append('images[]', file);
+      });
 
       fetch('php/postblog.php', {
         method: 'POST',
@@ -676,28 +1602,23 @@
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          // Show green popup
-          const popup = document.getElementById('blogSuccessPopup');
-          popup.style.display = 'block';
-          setTimeout(() => { popup.style.display = 'none'; }, 2500);
+          showDashboardToast(translateDashboard('toast_blog_posted'), 'success');
 
           // Reset form
           document.getElementById('blogForm').reset();
+          renderImagePreviews([]);
 
-          // Refresh page or view-blog section
-          location.reload();
-          // Or: showPage('view-blog');
+          showPage('view-blog');
+          loadDashboardBlogs();
         } else {
-          alert('Error: ' + (data.message || 'Could not post blog.'));
+          showDashboardToast(translateDashboard('toast_blog_post_error_prefix') + (data.message || translateDashboard('toast_blog_post_default_error')), 'error');
         }
       })
-      .catch(() => alert('Error posting blog.'));
+      .catch(() => showDashboardToast(translateDashboard('toast_blog_posting_error'), 'error'));
     });
-    
-    // Add popup box for success message
+
     document.body.insertAdjacentHTML('beforeend', `
-      <div id="blogSuccessPopup" style="display:none;position:fixed;top:30px;right:30px;z-index:2000;background:#28a745;color:#fff;padding:18px 32px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.2);font-weight:600;">
-        Blog successfully posted
+      <div id="dashboardToast" style="display:none;position:fixed;top:90px;right:30px;z-index:2000;color:#fff;padding:14px 24px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.2);font-weight:600;">
       </div>
     `);
     
@@ -711,6 +1632,68 @@
     
     // Prevent body scroll when sidebar is open on mobile
     document.addEventListener('DOMContentLoaded', function() {
+      loadDashboardBlogs();
+      loadContactMessages();
+
+      const dashboardLangButtons = Array.from(document.querySelectorAll('.dashboard-lang-btn'));
+      const dashboardLangLabels = Array.from(document.querySelectorAll('.dashboard-lang-label'));
+
+      function setDashboardLangButtonState(lang) {
+        if (!dashboardLangButtons.length) {
+          return;
+        }
+
+        const selectedLang = String(lang || 'en').toLowerCase().slice(0, 2);
+        currentDashboardLanguage = selectedLang === 'fr' ? 'fr' : 'en';
+
+        dashboardLangLabels.forEach((label) => {
+          label.textContent = selectedLang === 'fr' ? 'Langue :' : 'Language:';
+        });
+
+        dashboardLangButtons.forEach((button) => {
+          const buttonLang = String(button.getAttribute('data-lang') || 'en').toLowerCase();
+          button.classList.remove('btn-light', 'btn-outline-light', 'btn-primary', 'btn-outline-secondary');
+
+          if (buttonLang === selectedLang) {
+            button.classList.add('btn-primary');
+          } else {
+            button.classList.add('btn-outline-secondary');
+          }
+        });
+      }
+
+      const savedPreferredLanguage = localStorage.getItem('preferred-language') || 'en';
+      setDashboardLangButtonState(savedPreferredLanguage);
+      applyDashboardTranslations(savedPreferredLanguage);
+
+      dashboardLangButtons.forEach((button) => {
+        button.addEventListener('click', function () {
+          const selectedLanguage = button.getAttribute('data-lang') || 'en';
+          setDashboardLangButtonState(selectedLanguage);
+          applyDashboardTranslations(selectedLanguage);
+        });
+      });
+
+      const contactSearch = document.getElementById('contactSearch');
+      if (contactSearch) {
+        contactSearch.addEventListener('input', function() {
+          applyContactFilter(true);
+        });
+      }
+
+      const blogImagesInput = document.getElementById('blogImages');
+      if (blogImagesInput) {
+        blogImagesInput.addEventListener('change', function() {
+          const selectedImages = Array.from(blogImagesInput.files || []);
+
+          if (selectedImages.length > 10) {
+            showDashboardToast(translateDashboard('toast_blog_images_selected_more'), 'error');
+          }
+
+          renderImagePreviews(selectedImages.slice(0, 10));
+        });
+      }
+
       const sidebar = document.getElementById('sidebar');
       const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
@@ -727,6 +1710,7 @@
     });
   </script>
 
+<script src="js/site_translate.js"></script>
 </body>
 
 </html>

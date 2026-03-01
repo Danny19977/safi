@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $stmt->close();
 
-    $password = password($password, PASSWORD_DEFAULT);
+    $password = password_hash($password, PASSWORD_DEFAULT);
     $profile_picture = ''; // Default empty, can be updated later
     $created_at = date('Y-m-d H:i:s');
 

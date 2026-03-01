@@ -47,26 +47,22 @@ const translations = {
         services_premium_packaging_title: "Premium Packaging Strong Style, Stronger Coffee",
         services_premium_packaging_text: "Protective, airtight, & boldly designed—our bags & tins lock in freshness while showcasing Congo's vibrant spirit. From minimalist kraft to bold prints, every detail honors the craft.",
 
-        // Best sellers
-        best_sellers_discover_subheading: "Discover",
-        best_sellers_title: "Best Coffee Sellers",
-        best_sellers_text: "At Café SAFI PETIT KWILU, every cup carries the warmth of home—a small refuge where time slows, laughter flows, and the soul of the Congo lingers in the steam.",
-        best_sellers_coffee_title: "Coffee",
-        best_sellers_coffee_price: "5000 FC",
-        best_sellers_cafe_au_lait_title: "Café au lait",
-        best_sellers_cafe_au_lait_price: "3000 FC",
-        best_sellers_expresso_title: "EXPRESO",
-        best_sellers_expresso_price: "5000 FC",
-        best_sellers_mocha_title: "MOCHA",
-        best_sellers_mocha_price: "8000 FC",
+        // Supermarket Partners
+        // best_sellers_discover_subheading: "Discover",
+        best_sellers_title: "Our Partners",
+        best_sellers_text: "Ils nous font confiance 🤝✨",
+        best_sellers_coffee_title: "GGMART Hyper",
+        best_sellers_cafe_au_lait_title: "Moni-Shop",
+        best_sellers_expresso_title: "Super Market",
+        best_sellers_mocha_title: "Aéroport international de Ndjili – Boutiques",
 
         // Products
         products_discover_subheading: "Discover",
         products_title: "Our Products",
         products_text: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-        products_main_dish_tab: "Main Dish",
-        products_drinks_tab: "Drinks",
-        products_desserts_tab: "Desserts",
+        products_main_dish_tab: "Products",
+        products_drinks_tab: "Mechine",
+        products_desserts_tab: "Drinks",
 
         // Testimony
         testimony_subheading: "Testimony",
@@ -75,6 +71,9 @@ const translations = {
 
         // Blog
         recent_from_blog_title: "Recent from blog",
+        pagination_previous: "Previous",
+        pagination_next: "Next",
+        pagination_page_of: "Page {current} of {total}",
 
         // Appointment
         appointment_form_title: "Book a Table",
@@ -83,7 +82,7 @@ const translations = {
         footer_about_us_title: "About Us",
         footer_about_us_text: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
         footer_recent_blog_title: "Recent Blog",
-        copyright_text: "Copyright &copy; All rights reserved"
+        copyright_text: "Copyright &copy; FREELANCE SOLUTIONS {year} All rights reserved | by <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     },
     fr: {
         // Navigation
@@ -161,6 +160,9 @@ const translations = {
 
         // Blog
         recent_from_blog_title: "Récent du blog",
+        pagination_previous: "Précédent",
+        pagination_next: "Suivant",
+        pagination_page_of: "Page {current} sur {total}",
 
         // Appointment
         appointment_form_title: "Réserver une Table",
@@ -169,6 +171,6 @@ const translations = {
         footer_about_us_title: "À Propos de Nous",
         footer_about_us_text: "Loin, très loin, derrière les montagnes de mots, loin des pays Vokalia et Consonantia, vivent les textes aveugles.",
         footer_recent_blog_title: "Blog Récent",
-        copyright_text: "Copyright &copy; Tous droits réservés"
+        copyright_text: "Copyright &copy; FREELANCE SOLUTIONS {year} Tous droits réservés | par <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     }
 };

@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-translate]').forEach(element => {
             const key = element.getAttribute('data-translate');
             if (translations[lang] && translations[lang][key]) {
-                element.textContent = translations[lang][key];
+                const translatedValue = translations[lang][key].replace('{year}', new Date().getFullYear());
+                element.innerHTML = translatedValue;
             }
         });
     };

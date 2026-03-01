@@ -34,7 +34,7 @@ const translations = {
         footer_address_2: "51, Batetela Avenue at the intersection of 30 June Boulevard.",
         footer_phone: "+243 977068929",
         footer_email: "safiagroup84@gmail.com",
-        footer_copyright: "Copyright © All rights reserved | FREELANCE SOLUTIONS"
+        footer_copyright: "Copyright © {year} All rights reserved | <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     },
     fr: {
         nav_home: "Accueil",
@@ -71,6 +71,6 @@ const translations = {
         footer_address_2: "51, Avenue Batetela au croisement du boulevard du 30 juin.",
         footer_phone: "+243 977068929",
         footer_email: "safiagroup84@gmail.com",
-        footer_copyright: "Copyright © Tous droits réservés | FREELANCE SOLUTIONS"
+        footer_copyright: "Copyright © {year} Tous droits réservés | <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"
     }
 };
