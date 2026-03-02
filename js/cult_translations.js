@@ -65,7 +65,7 @@ const translations = {
         "footer_service_bean_bags": "coffee bean bags",
         "footer_service_packaging": "preminum Packaging",
         "footer_questions": "Have a Questions?",
-        "footer_address": "115, Avenue Colonel Ebeya at the intersection of Avenues du Marché",
+        "footer_address": "115, avenue Colonel Ebeya, immeuble AFRICAN lux, local 1. Kinshasa - Gombe",
         "footer_phone": "0977068929",
         "footer_email": "safiagroup84@gmail.com",
         "footer_copyright": "Copyright &copy; {year} All rights reserved | by <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>"

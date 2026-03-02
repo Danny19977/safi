@@ -25,9 +25,9 @@ const translations = {
         home_grown_intro: "We start where the magic does—right at the source. Our homegrown beans are nurtured with care, harvested at peak ripeness, and roasted to perfection, so every cup celebrates local roots with global flair. Proudly grown. Boldly brewed.",
 
         // Contact info
-        phone_number: "0977068929",
-        phone_number_description: "A small river named Duden flows by their place and supplies.",
-        address: "115, Avenue Colonel Ebeya au croisement des Avenues du Marché",
+        phone_number: "<a href=\"tel:0977068929\">0977068929</a>",
+        phone_number_description: "<div class=\"mt-2\"><h3 class=\"mb-0\"><a href=\"mailto:safiagroup84@gmail.com\">safiagroup84@gmail.com</a></h3></div><div class=\"mt-2\"><h3 class=\"mb-0\"><a href=\"mailto:info@safiagroup.com\">info@safiagroup.com</a></h3></div>",
+        address: "115, avenue Colonel Ebeya, immeuble AFRICAN lux, local 1. Kinshasa - Gombe",
         address_details: "51, Avenue Batetela au croisement du boulevard du 30 juin.",
         opening_hours: "Open Monday-Friday",
         opening_hours_time: "6:00 - 21:00",
@@ -110,9 +110,9 @@ const translations = {
         home_grown_intro: "Nous commençons là où la magie opère—directement à la source. Nos grains cultivés localement sont nourris avec soin, récoltés à maturité parfaite et torréfiés à la perfection, pour que chaque tasse célèbre les racines locales avec un flair mondial. Fièrement cultivé. Audacieusement brassé.",
 
         // Contact info
-        phone_number: "0977068929",
-        phone_number_description: "Une petite rivière nommée Duden coule près de leur lieu et fournit.",
-        address: "115, Avenue Colonel Ebeya au croisement des Avenues du Marché",
+        phone_number: "<a href=\"tel:0977068929\">0977068929</a>",
+        phone_number_description: "<div class=\"mt-2\"><h3 class=\"mb-0\"><a href=\"mailto:safiagroup84@gmail.com\">safiagroup84@gmail.com</a></h3></div><div class=\"mt-2\"><h3 class=\"mb-0\"><a href=\"mailto:info@safiagroup.com\">info@safiagroup.com</a></h3></div>",
+        address: "115, avenue Colonel Ebeya, immeuble AFRICAN lux, local 1. Kinshasa - Gombe",
         address_details: "51, Avenue Batetela au croisement du boulevard du 30 juin.",
         opening_hours: "Ouvert Lundi-Vendredi",
         opening_hours_time: "6h00 - 21h00",
@@ -149,9 +149,9 @@ const translations = {
         products_discover_subheading: "Découvrir",
         products_title: "Nos Produits",
         products_text: "Loin, très loin, derrière les montagnes de mots, loin des pays Vokalia et Consonantia, vivent les textes aveugles.",
-        products_main_dish_tab: "Plat Principal",
-        products_drinks_tab: "Boissons",
-        products_desserts_tab: "Desserts",
+        products_main_dish_tab: "Produits",
+        products_drinks_tab: "Mechine",
+        products_desserts_tab: "Boissons",
 
         // Testimony
         testimony_subheading: "Témoignage",
