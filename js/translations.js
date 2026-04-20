@@ -60,9 +60,9 @@ const translations = {
         products_discover_subheading: "Discover",
         products_title: "Our Products",
         products_text: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-        products_main_dish_tab: "Products",
-        products_drinks_tab: "Mechine",
-        products_desserts_tab: "Drinks",
+        products_Products_tab: "Products",
+        products_Mechine_tab: "Mechine",
+        products_drinks_tab: "Drinks",
 
         // Testimony
         testimony_subheading: "Testimony",
@@ -149,9 +149,9 @@ const translations = {
         products_discover_subheading: "Découvrir",
         products_title: "Nos Produits",
         products_text: "Loin, très loin, derrière les montagnes de mots, loin des pays Vokalia et Consonantia, vivent les textes aveugles.",
-        products_main_dish_tab: "Produits",
-        products_drinks_tab: "Mechine",
-        products_desserts_tab: "Boissons",
+        products_Products_tab: "Produits",
+        products_Mechine_tab: "Mechine",
+        products_drinks_tab: "Boissons",
 
         // Testimony
         testimony_subheading: "Témoignage",

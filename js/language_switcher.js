@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     class LanguageSwitcher {
         constructor() {
-            this.currentLanguage = this.getLanguageFromURL() || 'en';
+            this.storageKey = 'preferred-language';
+            this.currentLanguage = this.getPreferredLanguage();
             this.init();
         }
 
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.updateLanguageDisplay();
 
             // Store preference in localStorage
-            localStorage.setItem('preferredLanguage', newLanguage);
+            localStorage.setItem(this.storageKey, newLanguage);
         }
 
         // Get user's preferred language
@@ -110,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return urlLang;
             }
 
-            const storedLang = localStorage.getItem('preferredLanguage');
+            const storedLang = localStorage.getItem(this.storageKey);
             if (storedLang && translations[storedLang]) {
                 return storedLang;
             }

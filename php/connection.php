@@ -2,15 +2,12 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "cafeblog"; // Replace with your actual database name
+$dbname = "cafeblog";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die(json_encode(['success' => false, 'message' => 'Database connection failed']));
 }
-
-// Connection successful
-?>
