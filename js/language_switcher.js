@@ -42,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update document language attribute
             document.documentElement.lang = this.currentLanguage;
+
+            // Notify other scripts that the language changed
+            document.dispatchEvent(new CustomEvent('safiLangChange', { detail: { lang: this.currentLanguage } }));
         }
 
         updateLanguageDisplay() {

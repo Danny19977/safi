@@ -272,60 +272,64 @@
                     </div>
                 </div>
                 <div class="flex-1 rounded-xl p-12 pb-14 m-5 bg-black bg-opacity-50 tm-item-container">
-                    <h2 class="text-2xl mb-4 tm-text-gold">☕ Place an Order</h2>
+<h2 class="text-2xl mb-4 tm-text-gold" data-translate="order_form_title">☕ Place an Order</h2>
 
                     <form class="safi-order-form text-lg" novalidate>
                     <!-- Order type toggle -->
                     <div class="btn-group w-100 mb-4">
                         <button type="button" class="btn btn-outline-warning safi-tab-hot active">
-                            ☕ Hot Drinks<br><small style="font-weight:400;">Kinshasa Gombe only</small>
+                            <span data-translate="order_tab_hot">☕ Hot Drinks</span><br>
+                            <small style="font-weight:400;" data-translate="order_tab_hot_subtitle">Kinshasa Gombe only</small>
                         </button>
                         <button type="button" class="btn btn-outline-warning safi-tab-pack">
-                            📦 Coffee Packs<br><small style="font-weight:400;">RDC &amp; International</small>
+                            <span data-translate="order_tab_pack">📦 Coffee Packs</span><br>
+                            <small style="font-weight:400;" data-translate="order_tab_pack_subtitle">RDC &amp; International</small>
                         </button>
                     </div>
                         <input type="text" name="name"
                             class="safi-name input w-full bg-black border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold"
-                            placeholder="Full Name *" required />
+                            placeholder="Full Name *" required data-translate="order_field_name" />
                         <input type="tel" name="phone"
                             class="safi-phone input w-full bg-black border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold"
-                            placeholder="Phone / WhatsApp *" required />
+                            placeholder="Phone / WhatsApp *" required data-translate="order_field_phone" />
                         <input type="email" name="email"
                             class="safi-email input w-full bg-black border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold"
-                            placeholder="Email (optional)" />
+                            placeholder="Email (optional)" data-translate="order_field_email" />
                         <input type="text" name="address"
                             class="safi-address input w-full bg-black border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold"
-                            placeholder="Delivery Address *" required />
+                            placeholder="Delivery Address *" required data-translate="order_field_address" />
 
                         <!-- Pack delivery zone (hidden for hot drinks) -->
                         <div class="safi-zone-section d-none mb-4">
-                            <label class="text-yellow-400 text-sm mb-1 block">Delivery Zone</label>
+                            <label class="text-yellow-400 text-sm mb-1 block" data-translate="order_delivery_zone_label">Delivery Zone</label>
                             <select class="safi-country input w-full bg-black bg-opacity-80 text-white border border-yellow-600 px-3 py-3 rounded">
-                                <option value="rdc">📍 Within DRC (Congo)</option>
-                                <option value="international">✈️ International Export</option>
+                                <option value="rdc" data-translate="order_zone_rdc">📍 Within DRC (Congo)</option>
+                                <option value="international" data-translate="order_zone_international">✈️ International Export</option>
                             </select>
                         </div>
                         <div class="safi-intl-country-row d-none mb-4">
                             <input type="text"
                                 class="safi-intl-country-input input w-full bg-black border-b bg-opacity-0 text-white px-0 py-4 tm-border-gold"
-                                placeholder="Your country *" />
+                                placeholder="Your country *" data-translate="order_field_country" />
                         </div>
 
                         <!-- Items -->
-                        <label class="text-yellow-400 text-sm mb-2 block">Items to order</label>
+                        <label class="text-yellow-400 text-sm mb-2 block" data-translate="order_items_label">Items to order</label>
                         <div class="safi-items-list mb-3"></div>
                         <button type="button"
-                            class="safi-add-item text-sm text-yellow-400 underline mb-4 bg-transparent border-none cursor-pointer">
+                            class="safi-add-item text-sm text-yellow-400 underline mb-4 bg-transparent border-none cursor-pointer"
+                            data-translate="order_add_item">
                             + Add another item
                         </button>
 
                         <textarea rows="3" name="notes"
                             class="safi-notes input w-full bg-black border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold"
-                            placeholder="Special instructions (optional)"></textarea>
+                            placeholder="Special instructions (optional)" data-translate="order_notes_placeholder"></textarea>
 
                         <div class="text-right">
                             <button type="submit"
-                                class="safi-submit text-white hover:text-yellow-500 transition font-semibold text-lg">
+                                class="safi-submit text-white hover:text-yellow-500 transition font-semibold text-lg"
+                                data-translate="order_submit">
                                 Place Order →
                             </button>
                         </div>

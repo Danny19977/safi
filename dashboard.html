@@ -1600,7 +1600,8 @@
       };
     })();
 
-    var ORDERS_PER_PAGE = 10;
+    // Per-container records-per-page settings (default 15)
+    var ordersPerPage = { hotDrinkOrdersList: 15, packOrdersList: 15 };
 
     function renderOrdersTable(orders, containerId, page) {
       page = page || 1;
@@ -1610,11 +1611,14 @@
         container.innerHTML = '<p class="text-muted mb-0">' + escapeHtml(translateDashboard('no_orders')) + '</p>';
         return;
       }
-      var totalPages = Math.ceil(orders.length / ORDERS_PER_PAGE);
+
+      var perPage = ordersPerPage[containerId] || 15;
+      var effectivePerPage = (perPage >= 9999) ? orders.length : perPage;
+      var totalPages = Math.ceil(orders.length / effectivePerPage);
       if (page < 1) page = 1;
       if (page > totalPages) page = totalPages;
-      var start = (page - 1) * ORDERS_PER_PAGE;
-      var pageOrders = orders.slice(start, start + ORDERS_PER_PAGE);
+      var start = (page - 1) * effectivePerPage;
+      var pageOrders = orders.slice(start, start + effectivePerPage);
 
       var rows = pageOrders.map(function(order, index) {
         var status = order.status || 'pending';
@@ -1657,24 +1661,62 @@
           '</tr>';
       }).join('');
 
-      // Build pagination
-      var allOrders = (containerId === 'hotDrinkOrdersList') ? allHotOrders : allPackOrders;
+      // Per-page selector toolbar
+      var perPageOptions = [5, 10, 15, 25, 50].map(function(n) {
+        return '<option value="' + n + '"' + (perPage === n ? ' selected' : '') + '>' + n + '</option>';
+      }).join('') + '<option value="9999"' + (perPage >= 9999 ? ' selected' : '') + '>All</option>';
+      var toolbar =
+        '<div class="d-flex align-items-center mb-2" style="gap:8px;">' +
+          '<span class="text-muted small">Show</span>' +
+          '<select class="form-control form-control-sm d-inline-block" style="width:72px;" ' +
+            'onchange="ordersPerPage[\'' + containerId + '\']=parseInt(this.value,10);' +
+            'renderOrdersTable(allOrders_' + containerId + ',\'' + containerId + '\',1);">' +
+            perPageOptions +
+          '</select>' +
+          '<span class="text-muted small">records per page</span>' +
+        '</div>';
+
+      // Smart paginator: Prev · 1 · … · window · … · last · Next
       var paginationHtml = '';
       if (totalPages > 1) {
-        var items = '';
-        items += '<li class="page-item' + (page === 1 ? ' disabled' : '') + '">' +
-          '<a class="page-link" href="#" onclick="renderOrdersTable(allOrders_' + containerId + ',\'' + containerId + '\',' + (page - 1) + ');return false;">&laquo;</a></li>';
-        for (var p = 1; p <= totalPages; p++) {
-          items += '<li class="page-item' + (p === page ? ' active' : '') + '">' +
-            '<a class="page-link" href="#" onclick="renderOrdersTable(allOrders_' + containerId + ',\'' + containerId + '\',' + p + ');return false;">' + p + '</a></li>';
+        function pgBtn(p, label, isActive, isDisabled) {
+          var cls = 'page-item' + (isActive ? ' active' : '') + (isDisabled ? ' disabled' : '');
+          var oc  = isDisabled
+            ? 'return false;'
+            : 'renderOrdersTable(allOrders_' + containerId + ',\'' + containerId + '\',' + p + ');return false;';
+          return '<li class="' + cls + '"><a class="page-link" href="#" onclick="' + oc + '">' + label + '</a></li>';
         }
-        items += '<li class="page-item' + (page === totalPages ? ' disabled' : '') + '">' +
-          '<a class="page-link" href="#" onclick="renderOrdersTable(allOrders_' + containerId + ',\'' + containerId + '\',' + (page + 1) + ');return false;">&raquo;</a></li>';
-        paginationHtml = '<nav aria-label="Orders pagination" class="mt-2"><ul class="pagination pagination-sm mb-0">' + items + '</ul></nav>';
+        var wStart = Math.max(2, page - 2);
+        var wEnd   = Math.min(totalPages - 1, page + 2);
+        var pageItems = '';
+        // ← Prev
+        pageItems += pgBtn(page - 1, '&#8592; Prev', false, page === 1);
+        // Page 1
+        pageItems += pgBtn(1, '1', page === 1, false);
+        // Left ellipsis
+        if (wStart > 2) pageItems += '<li class="page-item disabled"><span class="page-link">&hellip;</span></li>';
+        // Window
+        for (var pw = wStart; pw <= wEnd; pw++) {
+          pageItems += pgBtn(pw, String(pw), pw === page, false);
+        }
+        // Right ellipsis
+        if (wEnd < totalPages - 1) pageItems += '<li class="page-item disabled"><span class="page-link">&hellip;</span></li>';
+        // Last page
+        if (totalPages > 1) pageItems += pgBtn(totalPages, String(totalPages), page === totalPages, false);
+        // Next →
+        pageItems += pgBtn(page + 1, 'Next &#8594;', false, page === totalPages);
+        paginationHtml = '<nav aria-label="Orders pagination"><ul class="pagination pagination-sm mb-0">' + pageItems + '</ul></nav>';
       }
-      var summary = '<p class="text-muted small mt-1 mb-0">Showing ' + (start + 1) + '–' + Math.min(start + ORDERS_PER_PAGE, orders.length) + ' of ' + orders.length + ' orders</p>';
+
+      var summary = '<span class="text-muted small">Showing ' +
+        (start + 1) + '&ndash;' + Math.min(start + effectivePerPage, orders.length) +
+        ' of ' + orders.length + ' orders</span>';
+
+      var footer = '<div class="d-flex align-items-center justify-content-between flex-wrap mt-2" style="gap:8px;">' +
+        summary + paginationHtml + '</div>';
 
       container.innerHTML =
+        toolbar +
         '<table class="contact-table" aria-label="Orders table">' +
         '<thead><tr>' +
         '<th>#</th>' +
@@ -1690,8 +1732,7 @@
         '</tr></thead>' +
         '<tbody>' + rows + '</tbody>' +
         '</table>' +
-        summary +
-        paginationHtml;
+        footer;
     }
 
     // Expose order arrays for pagination onclick handlers

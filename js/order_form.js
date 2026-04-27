@@ -6,6 +6,18 @@
     'use strict';
 
     /* ------------------------------------------------------------------ */
+    /*  i18n helper – reads current language from localStorage             */
+    /* ------------------------------------------------------------------ */
+    function t(key) {
+        var lang = localStorage.getItem('preferred-language') || 'en';
+        if (typeof translations !== 'undefined') {
+            var dict = translations[lang] || translations['en'];
+            if (dict && dict[key] !== undefined) return dict[key];
+        }
+        return key;
+    }
+
+    /* ------------------------------------------------------------------ */
     /*  Product catalogs                                                    */
     /* ------------------------------------------------------------------ */
     var HOT_DRINKS = [
@@ -51,7 +63,7 @@
         row.className = 'safi-item-row d-flex align-items-center mb-2';
         row.innerHTML =
             '<select class="form-control safi-item-name mr-2" required>' +
-            '<option value="" disabled selected>-- Choose item --</option>' +
+            '<option value="" disabled selected>' + t('order_choose_item') + '</option>' +
             options +
             '</select>' +
             '<input type="number" class="form-control safi-item-qty mr-2" min="1" value="1" style="max-width:80px" placeholder="Qty" required />' +
@@ -142,7 +154,7 @@
             var notes   = form.querySelector('.safi-notes') ? form.querySelector('.safi-notes').value.trim() : '';
 
             if (!name || !phone || !address) {
-                showAlert(feedback, 'danger', 'Please fill in your name, phone, and address.');
+                showAlert(feedback, 'danger', t('order_err_required'));
                 return;
             }
 
@@ -157,7 +169,7 @@
             });
 
             if (!valid || items.length === 0) {
-                showAlert(feedback, 'danger', 'Please select at least one item with a valid quantity.');
+                showAlert(feedback, 'danger', t('order_err_items'));
                 return;
             }
 
@@ -170,7 +182,7 @@
                     var intlInput = form.querySelector('.safi-intl-country-input');
                     country = intlInput ? intlInput.value.trim() : '';
                     if (!country) {
-                        showAlert(feedback, 'danger', 'Please enter your country for international export.');
+                        showAlert(feedback, 'danger', t('order_err_country'));
                         return;
                     }
                 }
@@ -189,7 +201,7 @@
             };
 
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Placing order…';
+            submitBtn.textContent = t('order_placing');
 
             // Absolute URL – works from index.html, menu.html, or any page in the same folder
             var siteRoot = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '');
@@ -203,26 +215,26 @@
             .then(function (r) { return r.json(); })
             .then(function (data) {
                 submitBtn.disabled    = false;
-                submitBtn.textContent = 'Place Order';
+                submitBtn.textContent = t('order_submit');
                 if (data.success) {
                     feedback.innerHTML =
                         '<div class="alert alert-success mt-3">' +
-                        '<strong>Order placed! 🎉</strong><br>' +
-                        'Your order number is: <strong>' + data.ordernumber + '</strong><br>' +
-                        'We will contact you shortly on <strong>' + phone + '</strong> to confirm.' +
+                        '<strong>' + t('order_success_title') + '</strong><br>' +
+                        t('order_success_number') + ' <strong>' + data.ordernumber + '</strong><br>' +
+                        t('order_success_contact').replace('{phone}', '<strong>' + phone + '</strong>') +
                         '</div>';
                     form.reset();
                     itemsList.innerHTML = '';
                     switchType('hot_drink');
                 } else {
-                    showAlert(feedback, 'danger', data.message || 'Something went wrong. Please try again.');
+                    showAlert(feedback, 'danger', data.message || t('order_err_generic'));
                 }
             })
             .catch(function (err) {
                 submitBtn.disabled    = false;
-                submitBtn.textContent = 'Place Order';
+                submitBtn.textContent = t('order_submit');
                 console.error('Order fetch error:', err);
-                showAlert(feedback, 'danger', 'Network error. Please check your connection and try again.');
+                showAlert(feedback, 'danger', t('order_err_network'));
             });
         });
     }
@@ -230,7 +242,44 @@
     /* ------------------------------------------------------------------ */
     /*  Bootstrap on DOMContentLoaded                                      */
     /* ------------------------------------------------------------------ */
+    var activeForms = [];
+
     document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.safi-order-form').forEach(initForm);
+        document.querySelectorAll('.safi-order-form').forEach(function (form) {
+            initForm(form);
+            activeForms.push(form);
+        });
     });
+
+    // Re-render dynamic content when language switches
+    document.addEventListener('safiLangChange', function () {
+        activeForms.forEach(function (form) {
+            var itemsList = form.querySelector('.safi-items-list');
+            if (!itemsList) return;
+
+            // Determine current type from which tab is active
+            var tabHot  = form.querySelector('.safi-tab-hot');
+            var curType = (tabHot && tabHot.classList.contains('active')) ? 'hot_drink' : 'pack';
+
+            // Rebuild each row keeping its selected value and qty
+            var rows = itemsList.querySelectorAll('.safi-item-row');
+            rows.forEach(function (oldRow) {
+                var oldVal = oldRow.querySelector('.safi-item-name').value;
+                var oldQty = oldRow.querySelector('.safi-item-qty').value;
+                // Build fresh row
+                buildItemRow(itemsList, curType);
+                var newRow = itemsList.lastElementChild;
+                if (oldVal) newRow.querySelector('.safi-item-name').value = oldVal;
+                newRow.querySelector('.safi-item-qty').value = oldQty;
+                oldRow.remove();
+            });
+
+            // Also translate the Add-item button text (JS-rendered if any)
+            var addBtn = form.querySelector('.safi-add-item');
+            if (addBtn && addBtn.hasAttribute('data-translate')) {
+                addBtn.textContent = t(addBtn.getAttribute('data-translate'));
+            }
+        });
+    });
+
 })();

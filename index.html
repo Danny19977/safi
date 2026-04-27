@@ -781,61 +781,63 @@
 					</iframe>
 				</div>
 				<div class="col-md-6 appointment ftco-animate">
-					<h3 class="mb-3">☕ Place an Order</h3>
+					<h3 class="mb-3" data-translate="order_form_title">☕ Place an Order</h3>
 
 					<form class="safi-order-form appointment-form" novalidate>
 					<!-- Order type selector -->
 					<div class="mb-3">
 						<div class="btn-group w-100">
 							<button type="button" class="btn btn-outline-primary safi-tab-hot active">
-								☕ Hot Drinks <small class="d-block" style="font-size:11px;">Kinshasa Gombe only</small>
+								<span data-translate="order_tab_hot">☕ Hot Drinks</span>
+								<small class="d-block" style="font-size:11px;" data-translate="order_tab_hot_subtitle">Kinshasa Gombe only</small>
 							</button>
 							<button type="button" class="btn btn-outline-primary safi-tab-pack">
-								📦 Coffee Packs <small class="d-block" style="font-size:11px;">RDC &amp; International</small>
+								<span data-translate="order_tab_pack">📦 Coffee Packs</span>
+								<small class="d-block" style="font-size:11px;" data-translate="order_tab_pack_subtitle">RDC &amp; International</small>
 							</button>
 						</div>
 					</div>
 						<!-- Customer info -->
 						<div class="d-md-flex">
 							<div class="form-group">
-								<input type="text" class="form-control safi-name" placeholder="Full Name *" required>
+								<input type="text" class="form-control safi-name" placeholder="Full Name *" required data-translate="order_field_name">
 							</div>
 							<div class="form-group ml-md-4">
-								<input type="tel" class="form-control safi-phone" placeholder="Phone / WhatsApp *" required>
+								<input type="tel" class="form-control safi-phone" placeholder="Phone / WhatsApp *" required data-translate="order_field_phone">
 							</div>
 						</div>
 						<div class="form-group">
-							<input type="email" class="form-control safi-email" placeholder="Email (optional)">
+							<input type="email" class="form-control safi-email" placeholder="Email (optional)" data-translate="order_field_email">
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control safi-address" placeholder="Delivery Address *" required>
+							<input type="text" class="form-control safi-address" placeholder="Delivery Address *" required data-translate="order_field_address">
 						</div>
 
 						<!-- Delivery zone (packs only) -->
 						<div class="safi-zone-section d-none mb-3">
-							<label class="text-white mb-1"><strong>Delivery Zone</strong></label>
+							<label class="text-white mb-1"><strong data-translate="order_delivery_zone_label">Delivery Zone</strong></label>
 							<select class="form-control safi-country">
-								<option value="rdc">📍 Within DRC (Congo)</option>
-								<option value="international">✈️ International Export</option>
+								<option value="rdc" data-translate="order_zone_rdc">📍 Within DRC (Congo)</option>
+								<option value="international" data-translate="order_zone_international">✈️ International Export</option>
 							</select>
 						</div>
 						<div class="safi-intl-country-row d-none form-group">
-							<input type="text" class="form-control safi-intl-country-input" placeholder="Enter your country *">
+							<input type="text" class="form-control safi-intl-country-input" placeholder="Enter your country *" data-translate="order_field_country">
 						</div>
 
 						<!-- Items -->
-						<label class="text-white mb-1"><strong>Your Items</strong></label>
+						<label class="text-white mb-1"><strong data-translate="order_items_label">Your Items</strong></label>
 						<div class="safi-items-list mb-2"></div>
-						<button type="button" class="btn btn-sm btn-outline-light safi-add-item mb-3">+ Add another item</button>
+						<button type="button" class="btn btn-sm btn-outline-light safi-add-item mb-3" data-translate="order_add_item">+ Add another item</button>
 
 						<!-- Notes -->
 						<div class="form-group">
-							<textarea class="form-control safi-notes" rows="2" placeholder="Special instructions (optional)"></textarea>
+							<textarea class="form-control safi-notes" rows="2" placeholder="Special instructions (optional)" data-translate="order_notes_placeholder"></textarea>
 						</div>
 
 						<!-- Submit -->
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary py-3 px-4 safi-submit">Place Order</button>
+							<button type="submit" class="btn btn-primary py-3 px-4 safi-submit" data-translate="order_submit">Place Order</button>
 						</div>
 
 						<div class="safi-feedback"></div>

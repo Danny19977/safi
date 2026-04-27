@@ -18,6 +18,9 @@ function switchLanguage(lang) {
     
     // Store language preference
     localStorage.setItem('preferred-language', lang);
+
+    // Notify other scripts that the language changed
+    document.dispatchEvent(new CustomEvent('safiLangChange', { detail: { lang: lang } }));
 }
 
 function initializeLanguage() {
