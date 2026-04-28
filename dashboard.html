@@ -833,8 +833,9 @@
             <!-- Search + status filter -->
             <div class="d-flex align-items-center mb-3 flex-wrap" style="gap:8px;">
               <input type="text" class="form-control form-control-sm" id="hotDrinkSearch"
+                data-dash-placeholder="order_search_placeholder"
                      style="max-width:260px;border:1px solid #c49b61;"
-                     placeholder="Search name, phone, order #..."
+                placeholder="Search name, phone, order #..."
                      oninput="applyOrderFilter('hotDrinkOrdersList')">
               <div class="btn-group btn-group-sm" id="hotDrinkStatusFilter" role="group" aria-label="Filter by status">
                 <button type="button" class="btn btn-outline-secondary active" onclick="setOrderStatusFilter('hotDrinkOrdersList','all')" data-filter="all" data-dash-i18n="status_all">All</button>
@@ -877,6 +878,7 @@
             <!-- Search + status filter -->
             <div class="d-flex align-items-center mb-3 flex-wrap" style="gap:8px;">
               <input type="text" class="form-control form-control-sm" id="packSearch"
+                data-dash-placeholder="order_search_placeholder"
                      style="max-width:260px;border:1px solid #c49b61;"
                      placeholder="Search name, phone, order #..."
                      oninput="applyOrderFilter('packOrdersList')">
@@ -1075,7 +1077,8 @@
         stats_pending: 'Pending',
         stats_delivered: 'Delivered',
         stats_not_delivered: 'Not Del.',
-        archived_view_label: 'Archived Orders'
+        archived_view_label: 'Archived Orders',
+        order_search_placeholder: 'Search name, phone, order #...'
       },
       fr: {
         admin_dashboard: 'Tableau de bord admin',
@@ -1195,7 +1198,8 @@
         stats_pending: 'En attente',
         stats_delivered: 'Livré',
         stats_not_delivered: 'Non livré',
-        archived_view_label: 'Commandes archivées'
+        archived_view_label: 'Commandes archivées',
+        order_search_placeholder: 'Rechercher nom, téléphone, n° commande...'
       }
     };
 
@@ -2086,35 +2090,36 @@
 
     function loadOrdersByType(type) {
       var containerId = (type === 'hot_drink') ? 'hotDrinkOrdersList' : 'packOrdersList';
+      var state = getOrderState(containerId);
+      var showArchived = state && state.archived ? 1 : 0;
       var container = document.getElementById(containerId);
       if (container) {
         container.innerHTML = '<p class="text-muted mb-0">' + escapeHtml(translateDashboard('loading_orders')) + '</p>';
       }
-      fetch('php/get_orders.php?type=' + encodeURIComponent(type))
+      fetch('php/get_orders.php?type=' + encodeURIComponent(type) + '&show_archived=' + String(showArchived))
         .then(function(res) { return res.json(); })
         .then(function(data) {
           var orders = (data && data.success) ? (data.orders || []) : [];
           if (type === 'hot_drink') {
             var prevCount = parseInt(localStorage.getItem('safi_seen_hot') || '0', 10);
-            var newCount  = orders.length;
+            var newCount  = state.archived ? prevCount : orders.length;
             if (newCount > prevCount) {
               safiNotifSound.play();
             }
             allHotOrders = orders;
             allOrders_hotDrinkOrdersList = orders;
             renderOrdersTable(allHotOrders, 'hotDrinkOrdersList', 1);
-            // Clear badge only if this page is currently open
             var section = document.getElementById('hot-drink-orders');
-            if (section && section.classList.contains('active')) {
+            if (!state.archived && section && section.classList.contains('active')) {
               localStorage.setItem('safi_seen_hot', String(newCount));
               updateOrderBadge('hotOrdersBadge', 0);
-            } else {
+            } else if (!state.archived) {
               var unseen = newCount - Math.min(prevCount, newCount);
               updateOrderBadge('hotOrdersBadge', unseen);
             }
           } else {
             var prevCountP = parseInt(localStorage.getItem('safi_seen_pack') || '0', 10);
-            var newCountP  = orders.length;
+            var newCountP  = state.archived ? prevCountP : orders.length;
             if (newCountP > prevCountP) {
               safiNotifSound.play();
             }
@@ -2122,10 +2127,10 @@
             allOrders_packOrdersList = orders;
             renderOrdersTable(allPackOrders, 'packOrdersList', 1);
             var sectionP = document.getElementById('pack-orders');
-            if (sectionP && sectionP.classList.contains('active')) {
+            if (!state.archived && sectionP && sectionP.classList.contains('active')) {
               localStorage.setItem('safi_seen_pack', String(newCountP));
               updateOrderBadge('packOrdersBadge', 0);
-            } else {
+            } else if (!state.archived) {
               var unseenP = newCountP - Math.min(prevCountP, newCountP);
               updateOrderBadge('packOrdersBadge', unseenP);
             }

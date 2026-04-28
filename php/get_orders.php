@@ -29,20 +29,27 @@ $type_filter   = isset($_GET['type']) && in_array($_GET['type'], $allowed_types,
 
 $show_archived = isset($_GET['show_archived']) && $_GET['show_archived'] === '1';
 
+// Detect status column first to keep WHERE clause compatible on older schemas
+$chk = $conn->query("SHOW COLUMNS FROM coffeeorder LIKE 'status'");
+$has_status_col = ($chk && $chk->num_rows > 0);
+
 $conditions = array();
 if ($type_filter) {
     $conditions[] = "o.type = '" . $conn->real_escape_string($type_filter) . "'";
 }
-if ($show_archived) {
-    $conditions[] = "o.status = 'archived'";
-} else {
-    $conditions[] = "(o.status IS NULL OR o.status != 'archived')";
+if ($has_status_col) {
+    if ($show_archived) {
+        $conditions[] = "o.status = 'archived'";
+    } else {
+        $conditions[] = "(o.status IS NULL OR o.status != 'archived')";
+    }
+} elseif ($show_archived) {
+    // No status column means no archived records available yet
+    $conditions[] = "1 = 0";
 }
 $where_clause = count($conditions) > 0 ? ('WHERE ' . implode(' AND ', $conditions)) : '';
 
-// Add status column if it doesn't exist yet
-$chk = $conn->query("SHOW COLUMNS FROM coffeeorder LIKE 'status'");
-$status_col = ($chk && $chk->num_rows > 0) ? "o.status," : "'pending' AS status,";
+$status_col = $has_status_col ? "o.status," : "'pending' AS status,";
 
 $result = $conn->query(
     "SELECT o.uuid, o.created_at, o.name, o.phone, o.address, o.type,
