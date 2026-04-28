@@ -11,23 +11,23 @@
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css?v=20260309v2">
-  <link rel="stylesheet" href="css/animate.css?v=20260309v2">
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css?v=20260427v1">
+  <link rel="stylesheet" href="css/animate.css?v=20260427v1">
 
-  <link rel="stylesheet" href="css/owl.carousel.min.css?v=20260309v2">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css?v=20260309v2">
-  <link rel="stylesheet" href="css/magnific-popup.css?v=20260309v2">
+  <link rel="stylesheet" href="css/owl.carousel.min.css?v=20260427v1">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css?v=20260427v1">
+  <link rel="stylesheet" href="css/magnific-popup.css?v=20260427v1">
 
-  <link rel="stylesheet" href="css/aos.css?v=20260309v2">
+  <link rel="stylesheet" href="css/aos.css?v=20260427v1">
 
-  <link rel="stylesheet" href="css/ionicons.min.css?v=20260309v2">
+  <link rel="stylesheet" href="css/ionicons.min.css?v=20260427v1">
 
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css?v=20260309v2">
-  <link rel="stylesheet" href="css/jquery.timepicker.css?v=20260309v2">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css?v=20260427v1">
+  <link rel="stylesheet" href="css/jquery.timepicker.css?v=20260427v1">
 
-  <link rel="stylesheet" href="css/flaticon.css?v=20260309v2">
-  <link rel="stylesheet" href="css/icomoon.css?v=20260309v2">
-  <link rel="stylesheet" href="css/style.css?v=20260309v2">
+  <link rel="stylesheet" href="css/flaticon.css?v=20260427v1">
+  <link rel="stylesheet" href="css/icomoon.css?v=20260427v1">
+  <link rel="stylesheet" href="css/style.css?v=20260427v1">
   
   <style>
     .dashboard-container {
@@ -517,7 +517,7 @@
       }
     }
   </style>
-  <script src="js/cache_cleanup_once.js?v=20260309v2"></script>
+  <script src="js/cache_cleanup_once.js?v=20260427v1"></script>
 </head>
 
 <body>
@@ -812,14 +812,37 @@
           <h2 data-dash-i18n="hot_drink_orders">☕ Hot Drink Orders</h2>
           <p class="mb-0" data-dash-i18n="hot_drink_orders_desc">Orders for hot drinks — delivered in Kinshasa Gombe</p>
         </div>
+        <!-- Stats bar -->
+        <div id="hotDrinkOrdersStats" class="row mb-3"></div>
         <div class="card">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0" data-dash-i18n="hot_drink_orders">Hot Drink Orders</h5>
-            <button class="btn btn-primary btn-sm" type="button" onclick="loadOrdersByType('hot_drink')">
-              <i class="oi oi-reload"></i> <span data-dash-i18n="refresh">Refresh</span>
-            </button>
+          <div class="card-header d-flex justify-content-between align-items-center flex-wrap" style="gap:8px;">
+            <h5 class="mb-0" id="hotDrinkCardTitle" data-dash-i18n="hot_drink_orders">Hot Drink Orders</h5>
+            <div class="d-flex align-items-center flex-wrap" style="gap:6px;">
+              <button class="btn btn-outline-secondary btn-sm" id="hotDrinkArchiveToggle" type="button" onclick="toggleOrdersArchiveMode('hotDrinkOrdersList','hot_drink')">
+                <i class="oi oi-box"></i> <span data-dash-i18n="view_archived">View Archive</span>
+              </button>
+              <button class="btn btn-outline-success btn-sm" type="button" onclick="exportOrdersCSV('hotDrinkOrdersList')">
+                <i class="oi oi-data-transfer-download"></i> <span data-dash-i18n="export_csv">Export CSV</span>
+              </button>
+              <button class="btn btn-primary btn-sm" type="button" onclick="loadOrdersByType('hot_drink')">
+                <i class="oi oi-reload"></i> <span data-dash-i18n="refresh">Refresh</span>
+              </button>
+            </div>
           </div>
           <div class="card-body">
+            <!-- Search + status filter -->
+            <div class="d-flex align-items-center mb-3 flex-wrap" style="gap:8px;">
+              <input type="text" class="form-control form-control-sm" id="hotDrinkSearch"
+                     style="max-width:260px;border:1px solid #c49b61;"
+                     placeholder="Search name, phone, order #..."
+                     oninput="applyOrderFilter('hotDrinkOrdersList')">
+              <div class="btn-group btn-group-sm" id="hotDrinkStatusFilter" role="group" aria-label="Filter by status">
+                <button type="button" class="btn btn-outline-secondary active" onclick="setOrderStatusFilter('hotDrinkOrdersList','all')" data-filter="all" data-dash-i18n="status_all">All</button>
+                <button type="button" class="btn btn-outline-warning" onclick="setOrderStatusFilter('hotDrinkOrdersList','pending')" data-filter="pending" data-dash-i18n="status_pending">Pending</button>
+                <button type="button" class="btn btn-outline-success" onclick="setOrderStatusFilter('hotDrinkOrdersList','delivered')" data-filter="delivered" data-dash-i18n="status_delivered">Delivered</button>
+                <button type="button" class="btn btn-outline-danger" onclick="setOrderStatusFilter('hotDrinkOrdersList','not_delivered')" data-filter="not_delivered" data-dash-i18n="status_not_delivered">Not Delivered</button>
+              </div>
+            </div>
             <div id="hotDrinkOrdersList" class="table-wrap">
               <p class="text-muted mb-0" data-dash-i18n="loading_orders">Loading orders...</p>
             </div>
@@ -833,14 +856,37 @@
           <h2 data-dash-i18n="pack_orders">📦 Pack Orders</h2>
           <p class="mb-0" data-dash-i18n="pack_orders_desc">Orders for coffee packs — RDC &amp; International</p>
         </div>
+        <!-- Stats bar -->
+        <div id="packOrdersStats" class="row mb-3"></div>
         <div class="card">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0" data-dash-i18n="pack_orders">Pack Orders</h5>
-            <button class="btn btn-primary btn-sm" type="button" onclick="loadOrdersByType('pack')">
-              <i class="oi oi-reload"></i> <span data-dash-i18n="refresh">Refresh</span>
-            </button>
+          <div class="card-header d-flex justify-content-between align-items-center flex-wrap" style="gap:8px;">
+            <h5 class="mb-0" id="packCardTitle" data-dash-i18n="pack_orders">Pack Orders</h5>
+            <div class="d-flex align-items-center flex-wrap" style="gap:6px;">
+              <button class="btn btn-outline-secondary btn-sm" id="packArchiveToggle" type="button" onclick="toggleOrdersArchiveMode('packOrdersList','pack')">
+                <i class="oi oi-box"></i> <span data-dash-i18n="view_archived">View Archive</span>
+              </button>
+              <button class="btn btn-outline-success btn-sm" type="button" onclick="exportOrdersCSV('packOrdersList')">
+                <i class="oi oi-data-transfer-download"></i> <span data-dash-i18n="export_csv">Export CSV</span>
+              </button>
+              <button class="btn btn-primary btn-sm" type="button" onclick="loadOrdersByType('pack')">
+                <i class="oi oi-reload"></i> <span data-dash-i18n="refresh">Refresh</span>
+              </button>
+            </div>
           </div>
           <div class="card-body">
+            <!-- Search + status filter -->
+            <div class="d-flex align-items-center mb-3 flex-wrap" style="gap:8px;">
+              <input type="text" class="form-control form-control-sm" id="packSearch"
+                     style="max-width:260px;border:1px solid #c49b61;"
+                     placeholder="Search name, phone, order #..."
+                     oninput="applyOrderFilter('packOrdersList')">
+              <div class="btn-group btn-group-sm" id="packStatusFilter" role="group" aria-label="Filter by status">
+                <button type="button" class="btn btn-outline-secondary active" onclick="setOrderStatusFilter('packOrdersList','all')" data-filter="all" data-dash-i18n="status_all">All</button>
+                <button type="button" class="btn btn-outline-warning" onclick="setOrderStatusFilter('packOrdersList','pending')" data-filter="pending" data-dash-i18n="status_pending">Pending</button>
+                <button type="button" class="btn btn-outline-success" onclick="setOrderStatusFilter('packOrdersList','delivered')" data-filter="delivered" data-dash-i18n="status_delivered">Delivered</button>
+                <button type="button" class="btn btn-outline-danger" onclick="setOrderStatusFilter('packOrdersList','not_delivered')" data-filter="not_delivered" data-dash-i18n="status_not_delivered">Not Delivered</button>
+              </div>
+            </div>
             <div id="packOrdersList" class="table-wrap">
               <p class="text-muted mb-0" data-dash-i18n="loading_orders">Loading orders...</p>
             </div>
@@ -881,26 +927,26 @@
         stroke="#F96D00" />
     </svg></div>
 
-  <script src="js/translations.js?v=20260309v2"></script>
-  <script src="js/language_switcher.js?v=20260309v2"></script>
-  <script src="js/jquery.min.js?v=20260309v2"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js?v=20260309v2"></script>
-  <script src="js/popper.min.js?v=20260309v2"></script>
-  <script src="js/bootstrap.min.js?v=20260309v2"></script>
-  <script src="js/jquery.easing.1.3.js?v=20260309v2"></script>
-  <script src="js/jquery.waypoints.min.js?v=20260309v2"></script>
-  <script src="js/jquery.stellar.min.js?v=20260309v2"></script>
-  <script src="js/owl.carousel.min.js?v=20260309v2"></script>
-  <script src="js/jquery.magnific-popup.min.js?v=20260309v2"></script>
-  <script src="js/aos.js?v=20260309v2"></script>
-  <script src="js/jquery.animateNumber.min.js?v=20260309v2"></script>
-  <script src="js/bootstrap-datepicker.js?v=20260309v2"></script>
-  <script src="js/jquery.timepicker.min.js?v=20260309v2"></script>
-  <script src="js/scrollax.min.js?v=20260309v2"></script>
+  <script src="js/translations.js?v=20260427v1"></script>
+  <script src="js/language_switcher.js?v=20260427v1"></script>
+  <script src="js/jquery.min.js?v=20260427v1"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js?v=20260427v1"></script>
+  <script src="js/popper.min.js?v=20260427v1"></script>
+  <script src="js/bootstrap.min.js?v=20260427v1"></script>
+  <script src="js/jquery.easing.1.3.js?v=20260427v1"></script>
+  <script src="js/jquery.waypoints.min.js?v=20260427v1"></script>
+  <script src="js/jquery.stellar.min.js?v=20260427v1"></script>
+  <script src="js/owl.carousel.min.js?v=20260427v1"></script>
+  <script src="js/jquery.magnific-popup.min.js?v=20260427v1"></script>
+  <script src="js/aos.js?v=20260427v1"></script>
+  <script src="js/jquery.animateNumber.min.js?v=20260427v1"></script>
+  <script src="js/bootstrap-datepicker.js?v=20260427v1"></script>
+  <script src="js/jquery.timepicker.min.js?v=20260427v1"></script>
+  <script src="js/scrollax.min.js?v=20260427v1"></script>
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js?v=20260309v2"></script>
-  <script src="js/main.js?v=20260309v2"></script>
+  <script src="js/google-map.js?v=20260427v1"></script>
+  <script src="js/main.js?v=20260427v1"></script>
   
   <script>
     const categoryMap = {
@@ -1005,7 +1051,31 @@
         table_type: 'Type',
         table_phone: 'Phone',
         table_quntity: 'Qty',
-        table_date: 'Date'
+        table_date: 'Date',
+        no_active_orders: 'No active orders.',
+        no_archived_orders: 'No archived orders.',
+        archive: 'Archive',
+        restore: 'Restore',
+        delete_order: 'Delete',
+        confirm_archive_order: 'Archive this order? It will be hidden from the active list.',
+        confirm_restore_order: 'Restore this order to the active list?',
+        confirm_delete_order: 'Permanently delete this order? This cannot be undone.',
+        toast_order_archived: 'Order archived.',
+        toast_order_restored: 'Order restored to active.',
+        toast_order_deleted: 'Order permanently deleted.',
+        toast_order_action_failed: 'Could not perform this action. Please try again.',
+        view_archived: 'View Archive',
+        view_active: 'View Active',
+        export_csv: 'Export CSV',
+        status_all: 'All',
+        status_pending: 'Pending',
+        status_delivered: 'Delivered',
+        status_not_delivered: 'Not Delivered',
+        stats_total: 'Total',
+        stats_pending: 'Pending',
+        stats_delivered: 'Delivered',
+        stats_not_delivered: 'Not Del.',
+        archived_view_label: 'Archived Orders'
       },
       fr: {
         admin_dashboard: 'Tableau de bord admin',
@@ -1101,7 +1171,31 @@
         table_type: 'Type',
         table_phone: 'Téléphone',
         table_quntity: 'Qté',
-        table_date: 'Date'
+        table_date: 'Date',
+        no_active_orders: 'Aucune commande active.',
+        no_archived_orders: 'Aucune commande archivée.',
+        archive: 'Archiver',
+        restore: 'Restaurer',
+        delete_order: 'Supprimer',
+        confirm_archive_order: 'Archiver cette commande ? Elle sera masquée de la liste active.',
+        confirm_restore_order: 'Restaurer cette commande dans la liste active ?',
+        confirm_delete_order: 'Supprimer définitivement cette commande ? Cette action est irréversible.',
+        toast_order_archived: 'Commande archivée.',
+        toast_order_restored: 'Commande restaurée.',
+        toast_order_deleted: 'Commande supprimée définitivement.',
+        toast_order_action_failed: 'Impossible d\'effectuer cette action. Veuillez réessayer.',
+        view_archived: 'Voir l\'archive',
+        view_active: 'Voir les actives',
+        export_csv: 'Exporter CSV',
+        status_all: 'Tous',
+        status_pending: 'En attente',
+        status_delivered: 'Livré',
+        status_not_delivered: 'Non livré',
+        stats_total: 'Total',
+        stats_pending: 'En attente',
+        stats_delivered: 'Livré',
+        stats_not_delivered: 'Non livré',
+        archived_view_label: 'Commandes archivées'
       }
     };
 
@@ -1603,22 +1697,248 @@
     // Per-container records-per-page settings (default 15)
     var ordersPerPage = { hotDrinkOrdersList: 15, packOrdersList: 15 };
 
+    // Per-container UI state (search, filter, archived mode)
+    var orderState = {
+      hotDrinkOrdersList: { search: '', statusFilter: 'all', archived: false, page: 1 },
+      packOrdersList:     { search: '', statusFilter: 'all', archived: false, page: 1 }
+    };
+
+    function getOrderState(containerId) {
+      if (!orderState[containerId]) {
+        orderState[containerId] = { search: '', statusFilter: 'all', archived: false, page: 1 };
+      }
+      return orderState[containerId];
+    }
+
+    function filterOrders(orders, state) {
+      var q  = (state.search || '').trim().toLowerCase();
+      var sf = state.statusFilter || 'all';
+      return (orders || []).filter(function(o) {
+        var s = o.status || 'pending';
+        if (sf !== 'all' && s !== sf) return false;
+        if (!q) return true;
+        var hay = [o.ordernumber, o.name, o.phone, o.address, o.items_list]
+          .map(function(v) { return String(v || '').toLowerCase(); }).join(' ');
+        return hay.indexOf(q) !== -1;
+      });
+    }
+
+    function setOrderStatusFilter(containerId, filter) {
+      var state = getOrderState(containerId);
+      state.statusFilter = filter;
+      state.page = 1;
+      var filterId = containerId === 'hotDrinkOrdersList' ? 'hotDrinkStatusFilter' : 'packStatusFilter';
+      var fg = document.getElementById(filterId);
+      if (fg) {
+        fg.querySelectorAll('button').forEach(function(btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
+        });
+      }
+      var arr = containerId === 'hotDrinkOrdersList' ? allOrders_hotDrinkOrdersList : allOrders_packOrdersList;
+      if (arr) renderOrdersTable(arr, containerId, 1);
+    }
+
+    function applyOrderFilter(containerId) {
+      var searchId = containerId === 'hotDrinkOrdersList' ? 'hotDrinkSearch' : 'packSearch';
+      var inp = document.getElementById(searchId);
+      var state = getOrderState(containerId);
+      state.search = inp ? inp.value : '';
+      state.page = 1;
+      var arr = containerId === 'hotDrinkOrdersList' ? allOrders_hotDrinkOrdersList : allOrders_packOrdersList;
+      if (arr) renderOrdersTable(arr, containerId, 1);
+    }
+
+    function toggleOrdersArchiveMode(containerId, type) {
+      var state = getOrderState(containerId);
+      state.archived = !state.archived;
+      state.page = 1;
+      state.search = '';
+      state.statusFilter = 'all';
+      // Reset search input
+      var searchId = containerId === 'hotDrinkOrdersList' ? 'hotDrinkSearch' : 'packSearch';
+      var inp = document.getElementById(searchId);
+      if (inp) inp.value = '';
+      // Reset status filter buttons
+      var filterId = containerId === 'hotDrinkOrdersList' ? 'hotDrinkStatusFilter' : 'packStatusFilter';
+      var fg = document.getElementById(filterId);
+      if (fg) {
+        fg.querySelectorAll('button').forEach(function(btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-filter') === 'all');
+        });
+        fg.style.display = state.archived ? 'none' : '';
+      }
+      // Update archive toggle button
+      var toggleId = containerId === 'hotDrinkOrdersList' ? 'hotDrinkArchiveToggle' : 'packArchiveToggle';
+      var toggleBtn = document.getElementById(toggleId);
+      if (toggleBtn) {
+        if (state.archived) {
+          toggleBtn.innerHTML = '<i class="oi oi-list"></i> ' + escapeHtml(translateDashboard('view_active'));
+          toggleBtn.classList.remove('btn-outline-secondary');
+          toggleBtn.classList.add('btn-warning');
+        } else {
+          toggleBtn.innerHTML = '<i class="oi oi-box"></i> ' + escapeHtml(translateDashboard('view_archived'));
+          toggleBtn.classList.remove('btn-warning');
+          toggleBtn.classList.add('btn-outline-secondary');
+        }
+      }
+      loadOrdersByType(type);
+    }
+
+    function archiveOrder(uuid, containerId) {
+      if (!window.confirm(translateDashboard('confirm_archive_order'))) return;
+      fetch('php/update_order_status.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ uuid: uuid, status: 'archived' })
+      })
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (d && d.success) {
+            showDashboardToast(translateDashboard('toast_order_archived'), 'success');
+            var type = containerId === 'hotDrinkOrdersList' ? 'hot_drink' : 'pack';
+            loadOrdersByType(type);
+          } else {
+            showDashboardToast(translateDashboard('toast_order_action_failed'), 'error');
+          }
+        })
+        .catch(function() { showDashboardToast(translateDashboard('toast_order_action_failed'), 'error'); });
+    }
+
+    function restoreOrder(uuid, containerId) {
+      if (!window.confirm(translateDashboard('confirm_restore_order'))) return;
+      fetch('php/update_order_status.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ uuid: uuid, status: 'pending' })
+      })
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (d && d.success) {
+            showDashboardToast(translateDashboard('toast_order_restored'), 'success');
+            var type = containerId === 'hotDrinkOrdersList' ? 'hot_drink' : 'pack';
+            loadOrdersByType(type);
+          } else {
+            showDashboardToast(translateDashboard('toast_order_action_failed'), 'error');
+          }
+        })
+        .catch(function() { showDashboardToast(translateDashboard('toast_order_action_failed'), 'error'); });
+    }
+
+    function deleteOrder(uuid, containerId) {
+      if (!window.confirm(translateDashboard('confirm_delete_order'))) return;
+      fetch('php/delete_order.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ uuid: uuid })
+      })
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (d && d.success) {
+            showDashboardToast(translateDashboard('toast_order_deleted'), 'success');
+            var type = containerId === 'hotDrinkOrdersList' ? 'hot_drink' : 'pack';
+            loadOrdersByType(type);
+          } else {
+            showDashboardToast(translateDashboard('toast_order_action_failed'), 'error');
+          }
+        })
+        .catch(function() { showDashboardToast(translateDashboard('toast_order_action_failed'), 'error'); });
+    }
+
+    function exportOrdersCSV(containerId) {
+      var arr = containerId === 'hotDrinkOrdersList' ? allOrders_hotDrinkOrdersList : allOrders_packOrdersList;
+      if (!arr || arr.length === 0) {
+        showDashboardToast('No orders to export', 'error');
+        return;
+      }
+      var state = getOrderState(containerId);
+      var filtered = filterOrders(arr, state);
+      if (filtered.length === 0) {
+        showDashboardToast('No orders match the current filter', 'error');
+        return;
+      }
+      var headers = ['Order #', 'Name', 'Phone', 'Address', 'Items', 'Qty', 'Date', 'Status'];
+      var rows = filtered.map(function(o) {
+        return [o.ordernumber, o.name, o.phone, o.address, o.items_list, o.quntity, o.created_at, o.status || 'pending']
+          .map(function(v) { return '"' + String(v || '').replace(/"/g, '""') + '"'; })
+          .join(',');
+      });
+      var csv = [headers.join(',')].concat(rows).join('\n');
+      var blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = (containerId === 'hotDrinkOrdersList' ? 'boissons_chaudes' : 'packs') + '_orders_' + new Date().toISOString().slice(0, 10) + '.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function renderOrderStats(orders, statsId, isArchived) {
+      var container = document.getElementById(statsId);
+      if (!container) return;
+      if (!Array.isArray(orders) || orders.length === 0) { container.innerHTML = ''; return; }
+      var total = orders.length;
+      var pending = 0, delivered = 0, not_delivered = 0;
+      orders.forEach(function(o) {
+        var s = o.status || 'pending';
+        if (s === 'pending') pending++;
+        else if (s === 'delivered') delivered++;
+        else if (s === 'not_delivered') not_delivered++;
+      });
+      if (isArchived) {
+        container.innerHTML =
+          '<div class="col-6 col-md-3 mb-2"><div class="card text-center" style="border-left:4px solid #6c757d;">' +
+            '<div class="card-body py-2"><div style="font-size:22px;font-weight:700;color:#6c757d;">' + total + '</div>' +
+            '<small class="text-muted">' + escapeHtml(translateDashboard('stats_total')) + '</small></div></div></div>';
+        return;
+      }
+      container.innerHTML =
+        '<div class="col-6 col-md-3 mb-2"><div class="card text-center" style="border-left:4px solid #c49b61;">' +
+          '<div class="card-body py-2"><div style="font-size:22px;font-weight:700;color:#c49b61;">' + total + '</div>' +
+          '<small class="text-muted">' + escapeHtml(translateDashboard('stats_total')) + '</small></div></div></div>' +
+        '<div class="col-6 col-md-3 mb-2"><div class="card text-center" style="border-left:4px solid #ffc107;">' +
+          '<div class="card-body py-2"><div style="font-size:22px;font-weight:700;color:#856404;">' + pending + '</div>' +
+          '<small class="text-muted">' + escapeHtml(translateDashboard('stats_pending')) + '</small></div></div></div>' +
+        '<div class="col-6 col-md-3 mb-2"><div class="card text-center" style="border-left:4px solid #28a745;">' +
+          '<div class="card-body py-2"><div style="font-size:22px;font-weight:700;color:#28a745;">' + delivered + '</div>' +
+          '<small class="text-muted">' + escapeHtml(translateDashboard('stats_delivered')) + '</small></div></div></div>' +
+        '<div class="col-6 col-md-3 mb-2"><div class="card text-center" style="border-left:4px solid #dc3545;">' +
+          '<div class="card-body py-2"><div style="font-size:22px;font-weight:700;color:#dc3545;">' + not_delivered + '</div>' +
+          '<small class="text-muted">' + escapeHtml(translateDashboard('stats_not_delivered')) + '</small></div></div></div>';
+    }
+
     function renderOrdersTable(orders, containerId, page) {
       page = page || 1;
       var container = document.getElementById(containerId);
       if (!container) return;
-      if (!Array.isArray(orders) || orders.length === 0) {
-        container.innerHTML = '<p class="text-muted mb-0">' + escapeHtml(translateDashboard('no_orders')) + '</p>';
+
+      var state = getOrderState(containerId);
+      var statsId = containerId === 'hotDrinkOrdersList' ? 'hotDrinkOrdersStats' : 'packOrdersStats';
+      var isArchived = state.archived;
+
+      // Render stats from full unfiltered list
+      renderOrderStats(orders, statsId, isArchived);
+
+      // Apply search + status filter
+      var filtered = filterOrders(orders, state);
+
+      if (!Array.isArray(filtered) || filtered.length === 0) {
+        var emptyKey = isArchived ? 'no_archived_orders' : (orders.length === 0 ? 'no_orders' : 'no_orders');
+        if (!isArchived && orders.length === 0) emptyKey = 'no_orders';
+        else if (!isArchived && filtered.length === 0) emptyKey = 'no_orders';
+        else if (isArchived) emptyKey = 'no_archived_orders';
+        container.innerHTML = '<p class="text-muted mb-0">' + escapeHtml(translateDashboard(emptyKey)) + '</p>';
         return;
       }
 
       var perPage = ordersPerPage[containerId] || 15;
-      var effectivePerPage = (perPage >= 9999) ? orders.length : perPage;
-      var totalPages = Math.ceil(orders.length / effectivePerPage);
+      var effectivePerPage = (perPage >= 9999) ? filtered.length : perPage;
+      var totalPages = Math.ceil(filtered.length / effectivePerPage);
       if (page < 1) page = 1;
       if (page > totalPages) page = totalPages;
       var start = (page - 1) * effectivePerPage;
-      var pageOrders = orders.slice(start, start + effectivePerPage);
+      var pageOrders = filtered.slice(start, start + effectivePerPage);
 
       var rows = pageOrders.map(function(order, index) {
         var status = order.status || 'pending';
@@ -1626,27 +1946,58 @@
         var statusBadge = '';
         if (status === 'delivered') {
           rowStyle = ' style="background:#e8f5e9;"';
-          statusBadge = '<span style="background:#28a745;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;">Delivered</span>';
+          statusBadge = '<span style="background:#28a745;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;">' + escapeHtml(translateDashboard('status_delivered')) + '</span>';
         } else if (status === 'not_delivered') {
           rowStyle = ' style="background:#fdecea;"';
-          statusBadge = '<span style="background:#dc3545;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;">Not Delivered</span>';
+          statusBadge = '<span style="background:#dc3545;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;">' + escapeHtml(translateDashboard('status_not_delivered')) + '</span>';
+        } else if (status === 'archived') {
+          rowStyle = ' style="background:#f8f9fa;"';
+          statusBadge = '<span style="background:#6c757d;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;">Archived</span>';
         } else {
-          statusBadge = '<span style="background:#ffc107;color:#212529;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;">Pending</span>';
+          statusBadge = '<span style="background:#ffc107;color:#212529;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;">' + escapeHtml(translateDashboard('status_pending')) + '</span>';
         }
-        var safeUuid = escapeHtml(order.uuid || '');
-        var safeName = escapeHtml(order.name || '').replace(/'/g, '&#39;');
-        var safePhone = escapeHtml(order.phone || '').replace(/'/g, '&#39;');
+
+        var safeUuid    = escapeHtml(order.uuid || '');
+        var safeName    = escapeHtml(order.name || '').replace(/'/g, '&#39;');
+        var safePhone   = escapeHtml(order.phone || '').replace(/'/g, '&#39;');
         var safeAddress = escapeHtml(order.address || '').replace(/'/g, '&#39;');
-        var actions =
-          '<button class="btn btn-sm btn-success mr-1" title="Mark Delivered" onclick="setOrderStatus(\'' + safeUuid + '\',\'delivered\',\'' + containerId + '\')" style="padding:3px 8px;">' +
-            '<i class="oi oi-check"></i>' +
-          '</button>' +
-          '<button class="btn btn-sm btn-danger mr-1" title="Mark Not Delivered" onclick="setOrderStatus(\'' + safeUuid + '\',\'not_delivered\',\'' + containerId + '\')" style="padding:3px 8px;">' +
-            '<i class="oi oi-x"></i>' +
-          '</button>' +
-          '<button class="btn btn-sm btn-outline-primary" title="Edit Order" onclick="openEditOrderModal(\'' + safeUuid + '\',\'' + safeName + '\',\'' + safePhone + '\',\'' + safeAddress + '\',\'' + containerId + '\')" style="padding:3px 8px;">' +
-            '<i class="oi oi-pencil"></i>' +
-          '</button>';
+
+        var actions;
+        if (isArchived) {
+          // Archived view: Restore + permanent Delete
+          actions =
+            '<button class="btn btn-sm btn-outline-primary mr-1" title="' + escapeHtml(translateDashboard('restore')) + '" ' +
+              'onclick="restoreOrder(\'' + safeUuid + '\',\'' + containerId + '\')" style="padding:3px 8px;">' +
+              '<i class="oi oi-loop-circular"></i>' +
+            '</button>' +
+            '<button class="btn btn-sm btn-danger" title="' + escapeHtml(translateDashboard('delete_order')) + '" ' +
+              'onclick="deleteOrder(\'' + safeUuid + '\',\'' + containerId + '\')" style="padding:3px 8px;">' +
+              '<i class="oi oi-trash"></i>' +
+            '</button>';
+        } else {
+          actions =
+            '<button class="btn btn-sm btn-success mr-1" title="' + escapeHtml(translateDashboard('status_delivered')) + '" ' +
+              'onclick="setOrderStatus(\'' + safeUuid + '\',\'delivered\',\'' + containerId + '\')" style="padding:3px 8px;">' +
+              '<i class="oi oi-check"></i>' +
+            '</button>' +
+            '<button class="btn btn-sm btn-danger mr-1" title="' + escapeHtml(translateDashboard('status_not_delivered')) + '" ' +
+              'onclick="setOrderStatus(\'' + safeUuid + '\',\'not_delivered\',\'' + containerId + '\')" style="padding:3px 8px;">' +
+              '<i class="oi oi-x"></i>' +
+            '</button>' +
+            '<button class="btn btn-sm btn-outline-primary mr-1" title="Edit" ' +
+              'onclick="openEditOrderModal(\'' + safeUuid + '\',\'' + safeName + '\',\'' + safePhone + '\',\'' + safeAddress + '\',\'' + containerId + '\')" style="padding:3px 8px;">' +
+              '<i class="oi oi-pencil"></i>' +
+            '</button>';
+          // Archive button only when completed (delivered or not_delivered)
+          if (status === 'delivered' || status === 'not_delivered') {
+            actions +=
+              '<button class="btn btn-sm btn-outline-secondary" title="' + escapeHtml(translateDashboard('archive')) + '" ' +
+                'onclick="archiveOrder(\'' + safeUuid + '\',\'' + containerId + '\')" style="padding:3px 8px;">' +
+                '<i class="oi oi-box"></i>' +
+              '</button>';
+          }
+        }
+
         return '<tr' + rowStyle + '>' +
           '<td>' + (start + index + 1) + '</td>' +
           '<td><strong>' + escapeHtml(order.ordernumber || '') + '</strong></td>' +
@@ -1657,7 +2008,7 @@
           '<td style="text-align:center;">' + escapeHtml(String(order.quntity || '')) + '</td>' +
           '<td>' + escapeHtml(order.created_at || '') + '</td>' +
           '<td>' + statusBadge + '</td>' +
-          '<td>' + actions + '</td>' +
+          '<td style="white-space:nowrap;">' + actions + '</td>' +
           '</tr>';
       }).join('');
 
@@ -1676,7 +2027,7 @@
           '<span class="text-muted small">records per page</span>' +
         '</div>';
 
-      // Smart paginator: Prev · 1 · … · window · … · last · Next
+      // Smart paginator
       var paginationHtml = '';
       if (totalPages > 1) {
         function pgBtn(p, label, isActive, isDisabled) {
@@ -1689,28 +2040,22 @@
         var wStart = Math.max(2, page - 2);
         var wEnd   = Math.min(totalPages - 1, page + 2);
         var pageItems = '';
-        // ← Prev
         pageItems += pgBtn(page - 1, '&#8592; Prev', false, page === 1);
-        // Page 1
         pageItems += pgBtn(1, '1', page === 1, false);
-        // Left ellipsis
         if (wStart > 2) pageItems += '<li class="page-item disabled"><span class="page-link">&hellip;</span></li>';
-        // Window
         for (var pw = wStart; pw <= wEnd; pw++) {
           pageItems += pgBtn(pw, String(pw), pw === page, false);
         }
-        // Right ellipsis
         if (wEnd < totalPages - 1) pageItems += '<li class="page-item disabled"><span class="page-link">&hellip;</span></li>';
-        // Last page
         if (totalPages > 1) pageItems += pgBtn(totalPages, String(totalPages), page === totalPages, false);
-        // Next →
         pageItems += pgBtn(page + 1, 'Next &#8594;', false, page === totalPages);
         paginationHtml = '<nav aria-label="Orders pagination"><ul class="pagination pagination-sm mb-0">' + pageItems + '</ul></nav>';
       }
 
       var summary = '<span class="text-muted small">Showing ' +
-        (start + 1) + '&ndash;' + Math.min(start + effectivePerPage, orders.length) +
-        ' of ' + orders.length + ' orders</span>';
+        (start + 1) + '&ndash;' + Math.min(start + effectivePerPage, filtered.length) +
+        ' of ' + filtered.length + (filtered.length !== orders.length ? ' (filtered from ' + orders.length + ')' : '') +
+        ' orders</span>';
 
       var footer = '<div class="d-flex align-items-center justify-content-between flex-wrap mt-2" style="gap:8px;">' +
         summary + paginationHtml + '</div>';

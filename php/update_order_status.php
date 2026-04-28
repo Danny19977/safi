@@ -32,7 +32,7 @@ if ($uuid === '' || $status === '') {
     exit;
 }
 
-$allowed_statuses = array('pending', 'delivered', 'not_delivered');
+$allowed_statuses = array('pending', 'delivered', 'not_delivered', 'archived');
 if (!in_array($status, $allowed_statuses, true)) {
     http_response_code(400);
     echo json_encode(array('success' => false, 'message' => 'Invalid status value'));

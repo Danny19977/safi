@@ -27,7 +27,18 @@ $allowed_types = array('hot_drink', 'pack');
 $type_filter   = isset($_GET['type']) && in_array($_GET['type'], $allowed_types, true)
     ? $_GET['type'] : null;
 
-$where_clause = $type_filter ? "WHERE o.type = '" . $conn->real_escape_string($type_filter) . "'" : '';
+$show_archived = isset($_GET['show_archived']) && $_GET['show_archived'] === '1';
+
+$conditions = array();
+if ($type_filter) {
+    $conditions[] = "o.type = '" . $conn->real_escape_string($type_filter) . "'";
+}
+if ($show_archived) {
+    $conditions[] = "o.status = 'archived'";
+} else {
+    $conditions[] = "(o.status IS NULL OR o.status != 'archived')";
+}
+$where_clause = count($conditions) > 0 ? ('WHERE ' . implode(' AND ', $conditions)) : '';
 
 // Add status column if it doesn't exist yet
 $chk = $conn->query("SHOW COLUMNS FROM coffeeorder LIKE 'status'");
