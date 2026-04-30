@@ -1,5 +1,19 @@
 const translations = {
     en: {
+        // Navigation
+        nav_home: "Home",
+        nav_menu: "Menu",
+        nav_services: "Services",
+        nav_blog: "Blog",
+        nav_about: "About",
+        nav_info: "Info",
+        nav_cultivation: "Cultivation",
+        nav_manufacturing: "Manufacturing",
+        nav_contact: "Contact",
+        nav_language: "Language",
+        lang_en: "English",
+        lang_fr: "Fran\u00e7ais",
+
         menu_page_title: "CAFE SAFI 100% PETIT KWILU",
         menu_page_subtitle: "The coffee with the perfect taste",
         menu_page_intro_text: "Forget everything you think you know about coffee. Cafe Safi isn't just a coffee shop; it's an experience that awakens your senses and redefines your expectations. We bring a different level of taste, a depth of flavor you've truly never encountered before. Every single sip is a journey of pure enjoyment.",
@@ -17,8 +31,14 @@ const translations = {
         footer_copyright_menu: "Copyright {year} <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>. All rights reserved.",
         footer_design_menu: "Design: <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>",
 
+        // Popup
+        popup_welcome_title: "Welcome to Cafe SAFI",
+        popup_welcome_text: "Explore our Our Stores section where you can place your order directly with us.",
+        popup_go_btn: "Go to Our Stores",
+        popup_close_btn: "Close",
+
         // Order form
-        order_form_title: "☕ Place an Order",
+        order_form_title: "🏪 Our Stores",
         order_tab_hot: "☕ Hot Drinks",
         order_tab_hot_subtitle: "Kinshasa Gombe only",
         order_tab_pack: "📦 Coffee Packs",
@@ -47,6 +67,20 @@ const translations = {
         order_err_generic: "Something went wrong. Please try again."
     },
     fr: {
+        // Navigation
+        nav_home: "Accueil",
+        nav_menu: "Menu",
+        nav_services: "Services",
+        nav_blog: "Blog",
+        nav_about: "\u00c0 propos",
+        nav_info: "Infos",
+        nav_cultivation: "Culture",
+        nav_manufacturing: "Fabrication",
+        nav_contact: "Contact",
+        nav_language: "Langue",
+        lang_en: "Anglais",
+        lang_fr: "Fran\u00e7ais",
+
         menu_page_title: "CAFE SAFI 100% PETIT KWILU",
         menu_page_subtitle: "Le café au goût parfait",
         menu_page_intro_text: "Oubliez tout ce que vous pensez savoir sur le café. Cafe Safi n'est pas seulement un café ; c'est une expérience qui éveille vos sens et redéfinit vos attentes. Nous apportons un niveau de goût différent, une profondeur de saveur que vous n'avez vraiment jamais rencontrée auparavant. Chaque gorgée est un voyage de pur plaisir.",
@@ -64,8 +98,14 @@ const translations = {
         footer_copyright_menu: "Copyright {year} <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>. Tous droits réservés.",
         footer_design_menu: "Design: <a href=\"https://freelancesoutions.vercel.app/\" target=\"_blank\" rel=\"noopener noreferrer\">FREELANCE SOLUTIONS</a>",
 
+        // Popup
+        popup_welcome_title: "Bienvenue chez Café SAFI",
+        popup_welcome_text: "Découvrez notre section Nos Magasins où vous pouvez passer votre commande directement avec nous.",
+        popup_go_btn: "Aller à Nos Magasins",
+        popup_close_btn: "Fermer",
+
         // Order form
-        order_form_title: "☕ Passer une Commande",
+        order_form_title: "🏪 Nos Magasins",
         order_tab_hot: "☕ Boissons Chaudes",
         order_tab_hot_subtitle: "Kinshasa Gombe uniquement",
         order_tab_pack: "📦 Packs de Café",

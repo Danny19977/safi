@@ -32,15 +32,17 @@ function initializeLanguage() {
 // Initialize language when page loads
 document.addEventListener('DOMContentLoaded', function() {
     initializeLanguage();
-    
-    // Add click event listeners to language dropdown items
-    document.querySelectorAll('#langDropdown + .dropdown-menu .dropdown-item').forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            const lang = this.getAttribute('data-lang');
-            if (lang) {
-                switchLanguage(lang);
-            }
-        });
-    });
 });
+
+// Use capture-phase delegation on the document so this fires before Bootstrap
+// can call stopPropagation on dropdown item clicks.
+document.addEventListener('click', function(e) {
+    const item = e.target.closest('[data-lang]');
+    if (!item) return;
+    e.preventDefault();
+    e.stopPropagation(); // prevent Bootstrap from scrolling to # or re-toggling
+    const lang = item.getAttribute('data-lang');
+    if (lang) {
+        switchLanguage(lang);
+    }
+}, true); // true = capture phase — fires before any bubbling handlers

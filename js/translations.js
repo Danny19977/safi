@@ -78,8 +78,14 @@ const translations = {
         // Appointment
         appointment_form_title: "Book a Table",
 
+        // Popup
+        popup_welcome_title: "Welcome to Cafe SAFI",
+        popup_welcome_text: "Explore our Our Stores section where you can place your order directly with us.",
+        popup_go_btn: "Go to Our Stores",
+        popup_close_btn: "Close",
+
         // Order form
-        order_form_title: "☕ Place an Order",
+        order_form_title: "🏪 Our Stores",
         order_tab_hot: "☕ Hot Drinks",
         order_tab_hot_subtitle: "Kinshasa Gombe only",
         order_tab_pack: "📦 Coffee Packs",
@@ -196,8 +202,14 @@ const translations = {
         // Appointment
         appointment_form_title: "Réserver une Table",
 
+        // Popup
+        popup_welcome_title: "Bienvenue chez Café SAFI",
+        popup_welcome_text: "Découvrez notre section Nos Magasins où vous pouvez passer votre commande directement avec nous.",
+        popup_go_btn: "Aller à Nos Magasins",
+        popup_close_btn: "Fermer",
+
         // Order form
-        order_form_title: "☕ Passer une Commande",
+        order_form_title: "🏪 Nos Magasins",
         order_tab_hot: "☕ Boissons Chaudes",
         order_tab_hot_subtitle: "Kinshasa Gombe uniquement",
         order_tab_pack: "📦 Packs de Café",
